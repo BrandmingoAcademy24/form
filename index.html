@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Registration Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #e31e25;
+      --secondary: #e46428;
+      --accent: #f9b900;
+      --highlight: #fdd707;
+      --gray: #3b3c3d;
+      --dark-blue: #0d283f;
+      --light: #fcfcfc;
+      --bg-light: #f5f7fa;
+      --border: #dcdcdc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--dark-blue);
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      font-size: 2rem;
+    }
+
+    form {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 960px;
+      margin: auto;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+      background-color: #fff;
+      color: var(--dark-blue);
+    }
+
+    input[type="file"] {
+      padding: 0.4rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    button {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: var(--primary);
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Participant Registration</h1>
+  <form id="registrationForm" novalidate>
+    <div class="section">
+      <h2>Participant 1</h2>
+      <div class="grid">
+        <div><label>Name*</label><input type="text" name="name1" required pattern="^[A-Za-z ]{2,50}$" title="Only alphabets allowed" /></div>
+        <div><label>Date of Birth*</label><input type="date" name="dob1" required max="{{today}}" /></div>
+        <div><label>UG Course</label><input type="text" name="ug1" /></div>
+        <div><label>Subject</label><input type="text" name="ugsub1" /></div>
+        <div><label>College</label><input type="text" name="college1" /></div>
+        <div><label>PG Course</label><input type="text" name="pg1" /></div>
+        <div><label>Subject</label><input type="text" name="pgsub1" /></div>
+        <div><label>University</label><input type="text" name="university1" /></div>
+        <div><label>Gender*</label>
+          <select name="gender1" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Others</option>
+          </select></div>
+        <div><label>Phone*</label><input type="tel" name="phone1" required /></div>
+        <div><label>Email*</label><input type="email" name="email1" required /></div>
+        <div><label>Social Media Account*</label><input type="url" name="social1" required /></div>
+        <div><label>City*</label><select name="city1" required><option value="">Select City</option><option>City 1</option><option>City 2</option></select></div>
+        <div><label>State*</label><select name="state1" required><option value="">Select State</option><option>State 1</option><option>State 2</option></select></div>
+        <div><label>ID Card*</label><input type="file" name="id1" required /></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Participant 2</h2>
+      <div class="grid">
+        <div><label>Name*</label><input type="text" name="name2" required pattern="^[A-Za-z ]{2,50}$" title="Only alphabets allowed" /></div>
+        <div><label>Date of Birth*</label><input type="date" name="dob2" required max="{{today}}" /></div>
+        <div><label>UG Course</label><input type="text" name="ug2" /></div>
+        <div><label>College</label><input type="text" name="college2" /></div>
+        <div><label>PG Course</label><input type="text" name="pg2" /></div>
+        <div><label>University</label><input type="text" name="university2" /></div>
+        <div><label>Gender*</label>
+          <select name="gender2" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Others</option>
+          </select></div>
+        <div><label>Phone*</label><input type="tel" name="phone2" required /></div>
+        <div><label>Email*</label><input type="email" name="email2" required /></div>
+        <div><label>Social Media Account*</label><input type="url" name="social2" required /></div>
+        <div><label>City*</label><select name="city2" required><option value="">Select City</option><option>City 1</option><option>City 2</option></select></div>
+        <div><label>State*</label><select name="state2" required><option value="">Select State</option><option>State 1</option><option>State 2</option></select></div>
+        <div><label>ID Card*</label><input type="file" name="id2" required /></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Motion Topic</h2>
+      <label>Motion*</label>
+      <select name="motion" required>
+        <option value="">Select a topic</option>
+        <option>Topic 1</option>
+        <option>Topic 2</option>
+        <option>Topic 3</option>
+      </select>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+      const form = e.target;
+      let isValid = true;
+      let messages = [];
+
+      // Helper functions
+      const isEmail = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      const isPhone = phone => /^[0-9]{10}$/.test(phone);
+      const isURL = url => /^(https?:\/\/)?([\w\-])+\.[\w]{2,}(\S*)?$/.test(url);
+
+      // Field values
+      const phone1 = form.phone1.value.trim();
+      const phone2 = form.phone2.value.trim();
+      const email1 = form.email1.value.trim();
+      const email2 = form.email2.value.trim();
+      const social1 = form.social1.value.trim();
+      const social2 = form.social2.value.trim();
+
+      if (!isPhone(phone1)) { isValid = false; messages.push("Phone 1 must be a 10-digit number."); }
+      if (!isPhone(phone2)) { isValid = false; messages.push("Phone 2 must be a 10-digit number."); }
+      if (phone1 && phone1 === phone2) { isValid = false; messages.push("Phone numbers must be unique."); }
+
+      if (!isEmail(email1)) { isValid = false; messages.push("Email 1 must be a valid email address."); }
+      if (!isEmail(email2)) { isValid = false; messages.push("Email 2 must be a valid email address."); }
+      if (email1 && email1 === email2) { isValid = false; messages.push("Email addresses must be unique."); }
+
+      if (!isURL(social1)) { isValid = false; messages.push("Social 1 must be a valid URL."); }
+      if (!isURL(social2)) { isValid = false; messages.push("Social 2 must be a valid URL."); }
+      if (social1 && social1 === social2) { isValid = false; messages.push("Social media accounts must be unique."); }
+
+      // UG or PG course validation for participant 1
+      const ug1 = form.ug1.value.trim();
+      const pg1 = form.pg1.value.trim();
+      if (!ug1 && !pg1) {
+        isValid = false;
+        messages.push("Participant 1 must have either UG or PG course filled.");
+      }
+
+      const ug2 = form.ug2.value.trim();
+      const pg2 = form.pg2.value.trim();
+      if (!ug2 && !pg2) {
+        isValid = false;
+        messages.push("Participant 2 must have either UG or PG course filled.");
+      }
+
+      if (!isValid) {
+        e.preventDefault();
+        alert(messages.join("\n"));
+      }
+    });
+  </script>
+</body>
+</html>
