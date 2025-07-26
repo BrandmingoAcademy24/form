@@ -19,8 +19,6 @@
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
       font-family: 'Inter', sans-serif;
     }
 
@@ -88,7 +86,7 @@
       padding: 0.65rem 0.85rem;
       border-radius: 8px;
       border: 1px solid var(--border);
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.3rem;
       font-size: 0.95rem;
       background-color: #fff;
       color: var(--dark-blue);
@@ -104,6 +102,17 @@
       gap: 1.5rem;
     }
 
+    .error-msg {
+      color: red;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .invalid {
+      border-color: red !important;
+    }
+
     button {
       background: linear-gradient(to right, var(--primary), var(--secondary));
       padding: 0.9rem 2rem;
@@ -115,7 +124,7 @@
       cursor: pointer;
       display: block;
       margin: 0 auto;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       transition: background 0.3s ease;
     }
 
@@ -143,96 +152,126 @@
 
   <form id="registrationForm" novalidate>
     <div class="grid">
-      <!-- PARTICIPANT 1 -->
+      <!-- Participant 1 -->
       <div>
         <h2>Participant 1</h2>
-        <label>Name*</label><input type="text" name="name1" required pattern="^[A-Za-z ]{2,50}$" />
-        <label>Date of Birth*</label><input type="date" name="dob1" required max="2025-07-26" />
+        <label>Name*</label>
+        <input type="text" name="name1" required />
+        <span class="error-msg"></span>
+
+        <label>Date of Birth*</label>
+        <input type="date" name="dob1" max="2025-07-26" required />
+        <span class="error-msg"></span>
+
         <label>Gender*</label>
         <select name="gender1" required>
           <option value="">Select</option><option>Male</option><option>Female</option><option>Others</option>
         </select>
+        <span class="error-msg"></span>
+
         <label>State*</label>
         <select name="state1" required>
           <option value="">Select State</option>
-          <option>Uttar Pradesh</option>
-          <option>Delhi</option>
-          <option>Maharashtra</option>
-          <option>Karnataka</option>
-          <option>Tamil Nadu</option>
-          <option>Telangana</option>
-          <option>West Bengal</option>
-          <option>Gujarat</option>
-          <option>Rajasthan</option>
+          <option>Uttar Pradesh</option><option>Delhi</option><option>Maharashtra</option>
+          <option>Karnataka</option><option>Tamil Nadu</option><option>Telangana</option>
+          <option>West Bengal</option><option>Gujarat</option><option>Rajasthan</option>
         </select>
+        <span class="error-msg"></span>
+
         <label>City*</label>
         <select name="city1" required>
           <option value="">Select City</option>
-          <option>Ghaziabad</option>
-          <option>New Delhi</option>
-          <option>Mumbai</option>
-          <option>Bengaluru</option>
-          <option>Chennai</option>
-          <option>Hyderabad</option>
-          <option>Kolkata</option>
-          <option>Pune</option>
-          <option>Ahmedabad</option>
-          <option>Jaipur</option>
+          <option>Ghaziabad</option><option>New Delhi</option><option>Mumbai</option>
+          <option>Bengaluru</option><option>Chennai</option><option>Hyderabad</option>
+          <option>Kolkata</option><option>Pune</option><option>Ahmedabad</option><option>Jaipur</option>
         </select>
-        <label>University</label><input type="text" name="university1" />
-        <label>College</label><input type="text" name="college1" />
-        <label>UG / PG</label><input type="text" name="course1" />
-        <label>Subject</label><input type="text" name="subject1" />
-        <label>Phone*</label><input type="tel" name="phone1" required />
-        <label>Email</label><input type="email" name="email1" />
-        <label>Social Media Profile</label><input type="url" name="social1" />
-        <label>ID Card*</label><input type="file" name="id1" required />
+        <span class="error-msg"></span>
+
+        <label>University</label>
+        <input type="text" name="university1" />
+        <label>College</label>
+        <input type="text" name="college1" />
+        <label>UG / PG</label>
+        <input type="text" name="course1" />
+        <label>Subject</label>
+        <input type="text" name="subject1" />
+
+        <label>Phone*</label>
+        <input type="tel" name="phone1" required />
+        <span class="error-msg"></span>
+
+        <label>Email</label>
+        <input type="email" name="email1" />
+        <span class="error-msg"></span>
+
+        <label>Social Media Profile</label>
+        <input type="url" name="social1" />
+        <span class="error-msg"></span>
+
+        <label>ID Card*</label>
+        <input type="file" name="id1" required />
+        <span class="error-msg"></span>
       </div>
 
-      <!-- PARTICIPANT 2 -->
+      <!-- Participant 2 -->
       <div>
         <h2>Participant 2</h2>
-        <label>Name*</label><input type="text" name="name2" required pattern="^[A-Za-z ]{2,50}$" />
-        <label>Date of Birth*</label><input type="date" name="dob2" required max="2025-07-26" />
+        <label>Name*</label>
+        <input type="text" name="name2" required />
+        <span class="error-msg"></span>
+
+        <label>Date of Birth*</label>
+        <input type="date" name="dob2" max="2025-07-26" required />
+        <span class="error-msg"></span>
+
         <label>Gender*</label>
         <select name="gender2" required>
           <option value="">Select</option><option>Male</option><option>Female</option><option>Others</option>
         </select>
+        <span class="error-msg"></span>
+
         <label>State*</label>
         <select name="state2" required>
           <option value="">Select State</option>
-          <option>Uttar Pradesh</option>
-          <option>Delhi</option>
-          <option>Maharashtra</option>
-          <option>Karnataka</option>
-          <option>Tamil Nadu</option>
-          <option>Telangana</option>
-          <option>West Bengal</option>
-          <option>Gujarat</option>
-          <option>Rajasthan</option>
+          <option>Uttar Pradesh</option><option>Delhi</option><option>Maharashtra</option>
+          <option>Karnataka</option><option>Tamil Nadu</option><option>Telangana</option>
+          <option>West Bengal</option><option>Gujarat</option><option>Rajasthan</option>
         </select>
+        <span class="error-msg"></span>
+
         <label>City*</label>
         <select name="city2" required>
           <option value="">Select City</option>
-          <option>Ghaziabad</option>
-          <option>New Delhi</option>
-          <option>Mumbai</option>
-          <option>Bengaluru</option>
-          <option>Chennai</option>
-          <option>Hyderabad</option>
-          <option>Kolkata</option>
-          <option>Pune</option>
-          <option>Ahmedabad</option>
-          <option>Jaipur</option>
+          <option>Ghaziabad</option><option>New Delhi</option><option>Mumbai</option>
+          <option>Bengaluru</option><option>Chennai</option><option>Hyderabad</option>
+          <option>Kolkata</option><option>Pune</option><option>Ahmedabad</option><option>Jaipur</option>
         </select>
-        <label>University</label><input type="text" name="university2" />
-        <label>College</label><input type="text" name="college2" />
-        <label>UG / PG</label><input type="text" name="course2" />
-        <label>Subject</label><input type="text" name="subject2" />
-        <label>Phone*</label><input type="tel" name="phone2" required />
-        <label>Email</label><input type="email" name="email2" />
-        <label>Social Media Profile</label><input type="url" name="social2" />
-        <label>ID Card*</label><input type="file" name="id2" required />
+        <span class="error-msg"></span>
+
+        <label>University</label>
+        <input type="text" name="university2" />
+        <label>College</label>
+        <input type="text" name="college2" />
+        <label>UG / PG</label>
+        <input type="text" name="course2" />
+        <label>Subject</label>
+        <input type="text" name="subject2" />
+
+        <label>Phone*</label>
+        <input type="tel" name="phone2" required />
+        <span class="error-msg"></span>
+
+        <label>Email</label>
+        <input type="email" name="email2" />
+        <span class="error-msg"></span>
+
+        <label>Social Media Profile</label>
+        <input type="url" name="social2" />
+        <span class="error-msg"></span>
+
+        <label>ID Card*</label>
+        <input type="file" name="id2" required />
+        <span class="error-msg"></span>
       </div>
     </div>
 
@@ -253,6 +292,7 @@
         <option>9. राज्य को अभिव्यक्ति की स्वतंत्रता की सीमा तय करनी चाहिए</option>
         <option>10. नाबालिग की आपराधिक उम्र को संशोधित किया जाना चाहिए</option>
       </select>
+      <span class="error-msg"></span>
     </div>
 
     <button type="submit">Submit</button>
@@ -261,36 +301,53 @@
   <script>
     document.getElementById('registrationForm').addEventListener('submit', function (e) {
       const form = e.target;
-      let isValid = true;
-      let messages = [];
+      const fields = form.querySelectorAll('input[required], select[required]');
+      let valid = true;
 
-      const isEmail = email => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
-      const isPhone = phone => /^[0-9]{10}$/.test(phone);
-      const isURL = url => url.trim() === "" || /^(https?:\\/\\/)?[\\w.-]+\\.[\\w]{2,}(\\/\\S*)?$/.test(url);
+      // Reset all error messages
+      fields.forEach(field => {
+        const msg = field.nextElementSibling;
+        field.classList.remove('invalid');
+        if (msg && msg.classList.contains('error-msg')) {
+          msg.style.display = 'none';
+          msg.textContent = '';
+        }
+      });
 
+      // Validate required fields
+      fields.forEach(field => {
+        const msg = field.nextElementSibling;
+        if (!field.value.trim()) {
+          field.classList.add('invalid');
+          if (msg) {
+            msg.textContent = 'This field is required.';
+            msg.style.display = 'block';
+          }
+          valid = false;
+        }
+      });
+
+      // Phone & Email uniqueness
       const phone1 = form.phone1.value.trim();
       const phone2 = form.phone2.value.trim();
       const email1 = form.email1.value.trim();
       const email2 = form.email2.value.trim();
-      const social1 = form.social1.value.trim();
-      const social2 = form.social2.value.trim();
 
-      if (!isPhone(phone1)) { isValid = false; messages.push("Phone 1 must be a 10-digit number."); }
-      if (!isPhone(phone2)) { isValid = false; messages.push("Phone 2 must be a 10-digit number."); }
-      if (phone1 && phone1 === phone2) { isValid = false; messages.push("Phone numbers must be unique."); }
-
-      if (email1 && !isEmail(email1)) { isValid = false; messages.push("Email 1 must be valid."); }
-      if (email2 && !isEmail(email2)) { isValid = false; messages.push("Email 2 must be valid."); }
-      if (email1 && email2 && email1 === email2) { isValid = false; messages.push("Emails must be unique."); }
-
-      if (!isURL(social1)) { isValid = false; messages.push("Social 1 must be a valid URL or left empty."); }
-      if (!isURL(social2)) { isValid = false; messages.push("Social 2 must be a valid URL or left empty."); }
-      if (social1 && social2 && social1 === social2) { isValid = false; messages.push("Social media profiles must be unique."); }
-
-      if (!isValid) {
-        e.preventDefault();
-        alert(messages.join("\\n"));
+      if (phone1 && phone2 && phone1 === phone2) {
+        form.phone2.classList.add('invalid');
+        form.phone2.nextElementSibling.textContent = "Phone numbers must be different.";
+        form.phone2.nextElementSibling.style.display = 'block';
+        valid = false;
       }
+
+      if (email1 && email2 && email1 === email2) {
+        form.email2.classList.add('invalid');
+        form.email2.nextElementSibling.textContent = "Emails must be different.";
+        form.email2.nextElementSibling.style.display = 'block';
+        valid = false;
+      }
+
+      if (!valid) e.preventDefault();
     });
   </script>
 
