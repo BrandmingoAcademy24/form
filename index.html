@@ -36,6 +36,8 @@
       align-items: center;
       max-width: 960px;
       margin: 0 auto 1.5rem;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     header h1 {
@@ -128,7 +130,6 @@
 
       header {
         flex-direction: column;
-        gap: 10px;
       }
     }
   </style>
@@ -137,7 +138,7 @@
 
   <header>
     <h1>Jagran Yuva Sansad Registration Form</h1>
-    <a href="/"> Back to Home</a>
+    <a href="/">🏠 Back to Home</a>
   </header>
 
   <form id="registrationForm" novalidate>
@@ -148,9 +149,36 @@
         <label>Name*</label><input type="text" name="name1" required pattern="^[A-Za-z ]{2,50}$" />
         <label>Date of Birth*</label><input type="date" name="dob1" required max="2025-07-26" />
         <label>Gender*</label>
-        <select name="gender1" required><option value="">Select</option><option>Male</option><option>Female</option><option>Others</option></select>
-        <label>State*</label><select name="state1" required><option value="">Select</option><option>State 1</option></select>
-        <label>City*</label><select name="city1" required><option value="">Select</option><option>City 1</option></select>
+        <select name="gender1" required>
+          <option value="">Select</option><option>Male</option><option>Female</option><option>Others</option>
+        </select>
+        <label>State*</label>
+        <select name="state1" required>
+          <option value="">Select State</option>
+          <option>Uttar Pradesh</option>
+          <option>Delhi</option>
+          <option>Maharashtra</option>
+          <option>Karnataka</option>
+          <option>Tamil Nadu</option>
+          <option>Telangana</option>
+          <option>West Bengal</option>
+          <option>Gujarat</option>
+          <option>Rajasthan</option>
+        </select>
+        <label>City*</label>
+        <select name="city1" required>
+          <option value="">Select City</option>
+          <option>Ghaziabad</option>
+          <option>New Delhi</option>
+          <option>Mumbai</option>
+          <option>Bengaluru</option>
+          <option>Chennai</option>
+          <option>Hyderabad</option>
+          <option>Kolkata</option>
+          <option>Pune</option>
+          <option>Ahmedabad</option>
+          <option>Jaipur</option>
+        </select>
         <label>University</label><input type="text" name="university1" />
         <label>College</label><input type="text" name="college1" />
         <label>UG / PG</label><input type="text" name="course1" />
@@ -167,9 +195,36 @@
         <label>Name*</label><input type="text" name="name2" required pattern="^[A-Za-z ]{2,50}$" />
         <label>Date of Birth*</label><input type="date" name="dob2" required max="2025-07-26" />
         <label>Gender*</label>
-        <select name="gender2" required><option value="">Select</option><option>Male</option><option>Female</option><option>Others</option></select>
-        <label>State*</label><select name="state2" required><option value="">Select</option><option>State 1</option></select>
-        <label>City*</label><select name="city2" required><option value="">Select</option><option>City 1</option></select>
+        <select name="gender2" required>
+          <option value="">Select</option><option>Male</option><option>Female</option><option>Others</option>
+        </select>
+        <label>State*</label>
+        <select name="state2" required>
+          <option value="">Select State</option>
+          <option>Uttar Pradesh</option>
+          <option>Delhi</option>
+          <option>Maharashtra</option>
+          <option>Karnataka</option>
+          <option>Tamil Nadu</option>
+          <option>Telangana</option>
+          <option>West Bengal</option>
+          <option>Gujarat</option>
+          <option>Rajasthan</option>
+        </select>
+        <label>City*</label>
+        <select name="city2" required>
+          <option value="">Select City</option>
+          <option>Ghaziabad</option>
+          <option>New Delhi</option>
+          <option>Mumbai</option>
+          <option>Bengaluru</option>
+          <option>Chennai</option>
+          <option>Hyderabad</option>
+          <option>Kolkata</option>
+          <option>Pune</option>
+          <option>Ahmedabad</option>
+          <option>Jaipur</option>
+        </select>
         <label>University</label><input type="text" name="university2" />
         <label>College</label><input type="text" name="college2" />
         <label>UG / PG</label><input type="text" name="course2" />
@@ -181,7 +236,7 @@
       </div>
     </div>
 
-    <!-- Motion Topics -->
+    <!-- Motion Topic -->
     <div class="section">
       <h2>Motion Topic</h2>
       <label>Choose a topic*</label>
