@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modern Registration Form</title>
+  <title>Jagran Yuva Sansad Registration</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #e31e25;
       --secondary: #e46428;
       --accent: #f9b900;
-      --highlight: #fdd707;
       --gray: #3b3c3d;
       --dark-blue: #0d283f;
-      --light: #fcfcfc;
+      --light: #ffffff;
       --bg-light: #f5f7fa;
       --border: #dcdcdc;
     }
@@ -31,11 +30,31 @@
       padding: 2rem;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 2rem;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto 1.5rem;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
       color: var(--primary);
-      font-size: 2rem;
+    }
+
+    header a {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    header a:hover {
+      background: var(--secondary);
     }
 
     form {
@@ -47,12 +66,8 @@
       box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
     }
 
-    .section {
-      margin-bottom: 2.5rem;
-    }
-
     h2 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--gray);
       margin-bottom: 1rem;
       border-bottom: 1px solid var(--border);
@@ -110,72 +125,78 @@
       form {
         padding: 1.5rem;
       }
+
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Participant Registration</h1>
+
+  <header>
+    <h1>Jagran Yuva Sansad Registration Form</h1>
+    <a href="/"> Back to Home</a>
+  </header>
+
   <form id="registrationForm" novalidate>
-    <div class="section">
-      <h2>Participant 1</h2>
-      <div class="grid">
-        <div><label>Name*</label><input type="text" name="name1" required pattern="^[A-Za-z ]{2,50}$" title="Only alphabets allowed" /></div>
-        <div><label>Date of Birth*</label><input type="date" name="dob1" required max="{{today}}" /></div>
-        <div><label>UG Course</label><input type="text" name="ug1" /></div>
-        <div><label>Subject</label><input type="text" name="ugsub1" /></div>
-        <div><label>College</label><input type="text" name="college1" /></div>
-        <div><label>PG Course</label><input type="text" name="pg1" /></div>
-        <div><label>Subject</label><input type="text" name="pgsub1" /></div>
-        <div><label>University</label><input type="text" name="university1" /></div>
-        <div><label>Gender*</label>
-          <select name="gender1" required>
-            <option value="">Select</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Others</option>
-          </select></div>
-        <div><label>Phone*</label><input type="tel" name="phone1" required /></div>
-        <div><label>Email*</label><input type="email" name="email1" required /></div>
-        <div><label>Social Media Account*</label><input type="url" name="social1" required /></div>
-        <div><label>City*</label><select name="city1" required><option value="">Select City</option><option>City 1</option><option>City 2</option></select></div>
-        <div><label>State*</label><select name="state1" required><option value="">Select State</option><option>State 1</option><option>State 2</option></select></div>
-        <div><label>ID Card*</label><input type="file" name="id1" required /></div>
+    <div class="grid">
+      <!-- PARTICIPANT 1 -->
+      <div>
+        <h2>Participant 1</h2>
+        <label>Name*</label><input type="text" name="name1" required pattern="^[A-Za-z ]{2,50}$" />
+        <label>Date of Birth*</label><input type="date" name="dob1" required max="2025-07-26" />
+        <label>Gender*</label>
+        <select name="gender1" required><option value="">Select</option><option>Male</option><option>Female</option><option>Others</option></select>
+        <label>State*</label><select name="state1" required><option value="">Select</option><option>State 1</option></select>
+        <label>City*</label><select name="city1" required><option value="">Select</option><option>City 1</option></select>
+        <label>University</label><input type="text" name="university1" />
+        <label>College</label><input type="text" name="college1" />
+        <label>UG / PG</label><input type="text" name="course1" />
+        <label>Subject</label><input type="text" name="subject1" />
+        <label>Phone*</label><input type="tel" name="phone1" required />
+        <label>Email</label><input type="email" name="email1" />
+        <label>Social Media Profile</label><input type="url" name="social1" />
+        <label>ID Card*</label><input type="file" name="id1" required />
+      </div>
+
+      <!-- PARTICIPANT 2 -->
+      <div>
+        <h2>Participant 2</h2>
+        <label>Name*</label><input type="text" name="name2" required pattern="^[A-Za-z ]{2,50}$" />
+        <label>Date of Birth*</label><input type="date" name="dob2" required max="2025-07-26" />
+        <label>Gender*</label>
+        <select name="gender2" required><option value="">Select</option><option>Male</option><option>Female</option><option>Others</option></select>
+        <label>State*</label><select name="state2" required><option value="">Select</option><option>State 1</option></select>
+        <label>City*</label><select name="city2" required><option value="">Select</option><option>City 1</option></select>
+        <label>University</label><input type="text" name="university2" />
+        <label>College</label><input type="text" name="college2" />
+        <label>UG / PG</label><input type="text" name="course2" />
+        <label>Subject</label><input type="text" name="subject2" />
+        <label>Phone*</label><input type="tel" name="phone2" required />
+        <label>Email</label><input type="email" name="email2" />
+        <label>Social Media Profile</label><input type="url" name="social2" />
+        <label>ID Card*</label><input type="file" name="id2" required />
       </div>
     </div>
 
-    <div class="section">
-      <h2>Participant 2</h2>
-      <div class="grid">
-        <div><label>Name*</label><input type="text" name="name2" required pattern="^[A-Za-z ]{2,50}$" title="Only alphabets allowed" /></div>
-        <div><label>Date of Birth*</label><input type="date" name="dob2" required max="{{today}}" /></div>
-        <div><label>UG Course</label><input type="text" name="ug2" /></div>
-        <div><label>College</label><input type="text" name="college2" /></div>
-        <div><label>PG Course</label><input type="text" name="pg2" /></div>
-        <div><label>University</label><input type="text" name="university2" /></div>
-        <div><label>Gender*</label>
-          <select name="gender2" required>
-            <option value="">Select</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Others</option>
-          </select></div>
-        <div><label>Phone*</label><input type="tel" name="phone2" required /></div>
-        <div><label>Email*</label><input type="email" name="email2" required /></div>
-        <div><label>Social Media Account*</label><input type="url" name="social2" required /></div>
-        <div><label>City*</label><select name="city2" required><option value="">Select City</option><option>City 1</option><option>City 2</option></select></div>
-        <div><label>State*</label><select name="state2" required><option value="">Select State</option><option>State 1</option><option>State 2</option></select></div>
-        <div><label>ID Card*</label><input type="file" name="id2" required /></div>
-      </div>
-    </div>
-
+    <!-- Motion Topics -->
     <div class="section">
       <h2>Motion Topic</h2>
-      <label>Motion*</label>
+      <label>Choose a topic*</label>
       <select name="motion" required>
-        <option value="">Select a topic</option>
-        <option>Topic 1</option>
-        <option>Topic 2</option>
-        <option>Topic 3</option>
+        <option value="">-- चयन करें --</option>
+        <option>1. जातीय जनगणना से कल्याणकारी योजनाओं के लिए वंचितों का पहचान करने में आसानी होगी</option>
+        <option>2. जिसकी जितनी भागीदारी उसकी उतनी हिस्सेदारी</option>
+        <option>3. जनसँख्या कानून बेहतर स्वास्थ सेवा और शिक्षा के लिए जरूरी है</option>
+        <option>4. जनसँख्या कानून वर्क फ़ोर्स डिविडेंड पर नकारात्मक प्रभाव डालेगा</option>
+        <option>5. पूजा स्थल अधिनियम धार्मिक स्वतंत्रता का उल्लंघन है</option>
+        <option>6. समलैंगिक विवाह को वैध बनाने से समानता को बढ़ावा मिलेगा</option>
+        <option>7. नारीवाद की तीसरी लहर जल्दबाजी में गढ़ी गई है</option>
+        <option>8. अप्रवासी सामाजिक समाकलन का प्रतिरोध करते हैं</option>
+        <option>9. राज्य को अभिव्यक्ति की स्वतंत्रता की सीमा तय करनी चाहिए</option>
+        <option>10. नाबालिग की आपराधिक उम्र को संशोधित किया जाना चाहिए</option>
       </select>
     </div>
 
@@ -188,12 +209,10 @@
       let isValid = true;
       let messages = [];
 
-      // Helper functions
-      const isEmail = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      const isEmail = email => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
       const isPhone = phone => /^[0-9]{10}$/.test(phone);
-      const isURL = url => /^(https?:\/\/)?([\w\-])+\.[\w]{2,}(\S*)?$/.test(url);
+      const isURL = url => url.trim() === "" || /^(https?:\\/\\/)?[\\w.-]+\\.[\\w]{2,}(\\/\\S*)?$/.test(url);
 
-      // Field values
       const phone1 = form.phone1.value.trim();
       const phone2 = form.phone2.value.trim();
       const email1 = form.email1.value.trim();
@@ -205,34 +224,20 @@
       if (!isPhone(phone2)) { isValid = false; messages.push("Phone 2 must be a 10-digit number."); }
       if (phone1 && phone1 === phone2) { isValid = false; messages.push("Phone numbers must be unique."); }
 
-      if (!isEmail(email1)) { isValid = false; messages.push("Email 1 must be a valid email address."); }
-      if (!isEmail(email2)) { isValid = false; messages.push("Email 2 must be a valid email address."); }
-      if (email1 && email1 === email2) { isValid = false; messages.push("Email addresses must be unique."); }
+      if (email1 && !isEmail(email1)) { isValid = false; messages.push("Email 1 must be valid."); }
+      if (email2 && !isEmail(email2)) { isValid = false; messages.push("Email 2 must be valid."); }
+      if (email1 && email2 && email1 === email2) { isValid = false; messages.push("Emails must be unique."); }
 
-      if (!isURL(social1)) { isValid = false; messages.push("Social 1 must be a valid URL."); }
-      if (!isURL(social2)) { isValid = false; messages.push("Social 2 must be a valid URL."); }
-      if (social1 && social1 === social2) { isValid = false; messages.push("Social media accounts must be unique."); }
-
-      // UG or PG course validation for participant 1
-      const ug1 = form.ug1.value.trim();
-      const pg1 = form.pg1.value.trim();
-      if (!ug1 && !pg1) {
-        isValid = false;
-        messages.push("Participant 1 must have either UG or PG course filled.");
-      }
-
-      const ug2 = form.ug2.value.trim();
-      const pg2 = form.pg2.value.trim();
-      if (!ug2 && !pg2) {
-        isValid = false;
-        messages.push("Participant 2 must have either UG or PG course filled.");
-      }
+      if (!isURL(social1)) { isValid = false; messages.push("Social 1 must be a valid URL or left empty."); }
+      if (!isURL(social2)) { isValid = false; messages.push("Social 2 must be a valid URL or left empty."); }
+      if (social1 && social2 && social1 === social2) { isValid = false; messages.push("Social media profiles must be unique."); }
 
       if (!isValid) {
         e.preventDefault();
-        alert(messages.join("\n"));
+        alert(messages.join("\\n"));
       }
     });
   </script>
+
 </body>
 </html>
