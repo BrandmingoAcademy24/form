@@ -15,6 +15,7 @@
       --light: #ffffff;
       --bg-light: #f5f7fa;
       --border: #dcdcdc;
+      --yellow-btn: #f9b900;
     }
 
     * {
@@ -24,37 +25,102 @@
 
     body {
       background-color: var(--bg-light);
+      margin: 0;
+      padding: 0;
       color: var(--dark-blue);
-      padding: 2rem;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 960px;
-      margin: 0 auto 1.5rem;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+   .navbar {
+  background: #fff;
+  display: flex;
+  max-width: 800px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 24px 24px;
+  margin: 0 auto 2rem auto;
+  position: relative;
+  z-index: 10;
+  flex-wrap: wrap;
+}
 
-    header h1 {
-      font-size: 1.8rem;
-      color: var(--primary);
-    }
+.navbar .logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: #333;
+  flex: 1 1 100%;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
 
-    header a {
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
+.navbar .nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 100%;
+}
 
-    header a:hover {
-      background: var(--secondary);
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.navbar .nav-links .btn {
+  background: var(--yellow-btn);
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* Mobile-specific styling */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
+
+  .navbar .logo {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navbar .nav-links .btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
+}
+
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 1rem 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+      }
     }
 
     form {
@@ -86,14 +152,10 @@
       padding: 0.65rem 0.85rem;
       border-radius: 8px;
       border: 1px solid var(--border);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
       font-size: 0.95rem;
       background-color: #fff;
       color: var(--dark-blue);
-    }
-
-    input[type="file"] {
-      padding: 0.4rem;
     }
 
     .grid {
@@ -105,8 +167,9 @@
     .error-msg {
       color: red;
       font-size: 0.85rem;
-      margin-bottom: 1rem;
       display: none;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
     }
 
     .invalid {
@@ -123,8 +186,7 @@
       color: white;
       cursor: pointer;
       display: block;
-      margin: 0 auto;
-      margin-top: 1.5rem;
+      margin: 2rem auto 0;
       transition: background 0.3s ease;
     }
 
@@ -132,24 +194,68 @@
       background: var(--primary);
     }
 
-    @media (max-width: 600px) {
-      form {
-        padding: 1.5rem;
-      }
+    /* ✅ Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
 
-      header {
-        flex-direction: column;
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 2rem;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      font-size: 1.1rem;
+      animation: zoomIn 0.5s ease-in-out;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Jagran Yuva Sansad Registration Form</h1>
-    <a href="/">🏠 Back to Home</a>
-  </header>
+  <!-- Responsive NAVBAR -->
+<nav class="navbar" role="navigation">
 
+  <div class="logo">Jagran Yuva Sansad Registration Form</div>
+  
+  <div class="nav-links" id="navLinks">
+    <a href="https://brandmingoacademy24.github.io/jyp/" class="btn">Home</a>
+  </div>
+  
+<!--   <div class="hamburger" onclick="toggleMenu()">☰</div> -->
+</nav>
+
+  <!-- REGISTRATION FORM -->
   <form id="registrationForm" novalidate>
     <div class="grid">
       <!-- Participant 1 -->
@@ -165,7 +271,10 @@
 
         <label>Gender*</label>
         <select name="gender1" required>
-          <option value="">Select</option><option>Male</option><option>Female</option><option>Others</option>
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Others</option>
         </select>
         <span class="error-msg"></span>
 
@@ -187,26 +296,33 @@
         </select>
         <span class="error-msg"></span>
 
-        <label>University</label>
-        <input type="text" name="university1" />
-        <label>College</label>
-        <input type="text" name="college1" />
-        <label>UG / PG</label>
-        <input type="text" name="course1" />
-        <label>Subject</label>
-        <input type="text" name="subject1" />
+        <label>University*</label>
+        <input type="text" name="university1" required />
+        <span class="error-msg"></span>
+        <label>College*</label>
+        <input type="text" name="college1" required />
+        <span class="error-msg"></span>
+        <label>Course*</label>
+        <select name="course1" required>
+          <option value="">Select</option>
+          <option>UG</option>
+          <option>PG</option>
+        </select>
+        <span class="error-msg"></span>
+        <label>Subject*</label>
+        <input type="text" name="subject1" required />
+        <span class="error-msg"></span>
 
         <label>Phone*</label>
         <input type="tel" name="phone1" required />
         <span class="error-msg"></span>
 
-        <label>Email</label>
-        <input type="email" name="email1" />
+        <label>Email*</label>
+        <input type="email" name="email1" required />
         <span class="error-msg"></span>
 
-        <label>Social Media Profile</label>
+        <label>Social Media Profile (Optional)</label>
         <input type="url" name="social1" />
-        <span class="error-msg"></span>
 
         <label>ID Card*</label>
         <input type="file" name="id1" required />
@@ -226,48 +342,52 @@
 
         <label>Gender*</label>
         <select name="gender2" required>
-          <option value="">Select</option><option>Male</option><option>Female</option><option>Others</option>
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Others</option>
         </select>
         <span class="error-msg"></span>
 
         <label>State*</label>
-        <select name="state2" required>
+        <select name="state2" onchange="updateCities(this, 'city2')" required>
           <option value="">Select State</option>
-          <option>Uttar Pradesh</option><option>Delhi</option><option>Maharashtra</option>
-          <option>Karnataka</option><option>Tamil Nadu</option><option>Telangana</option>
-          <option>West Bengal</option><option>Gujarat</option><option>Rajasthan</option>
         </select>
         <span class="error-msg"></span>
 
         <label>City*</label>
         <select name="city2" required>
           <option value="">Select City</option>
-          <option>Ghaziabad</option><option>New Delhi</option><option>Mumbai</option>
-          <option>Bengaluru</option><option>Chennai</option><option>Hyderabad</option>
-          <option>Kolkata</option><option>Pune</option><option>Ahmedabad</option><option>Jaipur</option>
         </select>
         <span class="error-msg"></span>
 
-        <label>University</label>
-        <input type="text" name="university2" />
-        <label>College</label>
-        <input type="text" name="college2" />
-        <label>UG / PG</label>
-        <input type="text" name="course2" />
-        <label>Subject</label>
-        <input type="text" name="subject2" />
+        <label>University*</label>
+        <input type="text" name="university2" required />
+        <span class="error-msg"></span>
+        <label>College*</label>
+        <input type="text" name="college2" required />
+        <span class="error-msg"></span>
+        <label>Course*</label>
+        <select name="course2" required>
+          <option value="">Select</option>
+          <option>UG</option>
+          <option>PG</option>
+        </select>
+        <span class="error-msg"></span>
+        <label>Subject*</label>
+        <input type="text" name="subject2" required />
+        <span class="error-msg"></span>
 
         <label>Phone*</label>
         <input type="tel" name="phone2" required />
         <span class="error-msg"></span>
 
-        <label>Email</label>
-        <input type="email" name="email2" />
+        <label>Email*</label>
+        <input type="email" name="email2" required />
         <span class="error-msg"></span>
 
-        <label>Social Media Profile</label>
+        <label>Social Media Profile (Optional)</label>
         <input type="url" name="social2" />
-        <span class="error-msg"></span>
 
         <label>ID Card*</label>
         <input type="file" name="id2" required />
@@ -281,7 +401,7 @@
       <label>Choose a topic*</label>
       <select name="motion" required>
         <option value="">-- चयन करें --</option>
-        <option>1. जातीय जनगणना से कल्याणकारी योजनाओं के लिए वंचितों का पहचान करने में आसानी होगी</option>
+         <option>1. जातीय जनगणना से कल्याणकारी योजनाओं के लिए वंचितों का पहचान करने में आसानी होगी</option>
         <option>2. जिसकी जितनी भागीदारी उसकी उतनी हिस्सेदारी</option>
         <option>3. जनसँख्या कानून बेहतर स्वास्थ सेवा और शिक्षा के लिए जरूरी है</option>
         <option>4. जनसँख्या कानून वर्क फ़ोर्स डिविडेंड पर नकारात्मक प्रभाव डालेगा</option>
@@ -298,24 +418,35 @@
     <button type="submit">Submit</button>
   </form>
 
-  <script>
-    document.getElementById('registrationForm').addEventListener('submit', function (e) {
-      const form = e.target;
-      const fields = form.querySelectorAll('input[required], select[required]');
-      let valid = true;
+  <!-- Thank You Modal -->
+  <div class="modal" id="thankYouModal">
+    <div class="modal-content">
+      <p>Thank you for your registration!</p>
+    </div>
+  </div>
 
-      // Reset all error messages
-      fields.forEach(field => {
-        const msg = field.nextElementSibling;
-        field.classList.remove('invalid');
-        if (msg && msg.classList.contains('error-msg')) {
-          msg.style.display = 'none';
-          msg.textContent = '';
-        }
-      });
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('active');
+  }
 
-      // Validate required fields
-      fields.forEach(field => {
+  document.getElementById('registrationForm').addEventListener('submit', function (e) {
+    const form = e.target;
+    const fields = form.querySelectorAll('input[required], select[required]');
+    let valid = true;
+
+    fields.forEach(field => {
+      const msg = field.parentElement.querySelector('.error-msg');
+      field.classList.remove('invalid');
+      if (msg) {
+        msg.style.display = 'none';
+        msg.textContent = ' ';
+      }
+    });
+    
+    // Validate required fields
+    fields.forEach(field => {
         const msg = field.nextElementSibling;
         if (!field.value.trim()) {
           field.classList.add('invalid');
@@ -327,29 +458,65 @@
         }
       });
 
-      // Phone & Email uniqueness
-      const phone1 = form.phone1.value.trim();
-      const phone2 = form.phone2.value.trim();
-      const email1 = form.email1.value.trim();
-      const email2 = form.email2.value.trim();
-
-      if (phone1 && phone2 && phone1 === phone2) {
-        form.phone2.classList.add('invalid');
-        form.phone2.nextElementSibling.textContent = "Phone numbers must be different.";
-        form.phone2.nextElementSibling.style.display = 'block';
+    fields.forEach(field => {
+      const msg = field.parentElement.querySelector('.error-msg');
+      if (!field.value.trim()) {
+        field.classList.add('invalid');
+        if (msg) {
+          msg.textContent = 'This field is required.';
+          msg.style.display = 'block';
+        }
         valid = false;
       }
-
-      if (email1 && email2 && email1 === email2) {
-        form.email2.classList.add('invalid');
-        form.email2.nextElementSibling.textContent = "Emails must be different.";
-        form.email2.nextElementSibling.style.display = 'block';
-        valid = false;
-      }
-
-      if (!valid) e.preventDefault();
     });
-  </script>
+
+    const phone1 = form.querySelector('[name="phone1"]').value.trim();
+    const phone2 = form.querySelector('[name="phone2"]').value.trim();
+    const email1 = form.querySelector('[name="email1"]').value.trim();
+    const email2 = form.querySelector('[name="email2"]').value.trim();
+
+    if (phone1 && phone2 && phone1 === phone2) {
+      const phone2Field = form.querySelector('[name="phone2"]');
+      const msg = phone2Field.parentElement.querySelector('.error-msg');
+      phone2Field.classList.add('invalid');
+      if (msg) {
+        msg.textContent = 'Phone numbers must be different.';
+        msg.style.display = 'block';
+      }
+      valid = false;
+    }
+
+    if (email1 && email2 && email1 === email2) {
+      const email2Field = form.querySelector('[name="email2"]');
+      const msg = email2Field.parentElement.querySelector('.error-msg');
+      email2Field.classList.add('invalid');
+      if (msg) {
+        msg.textContent = 'Emails must be different.';
+        msg.style.display = 'block';
+      }
+      valid = false;
+    }
+
+    if (!valid) {
+      e.preventDefault();
+    } else {
+      e.preventDefault();
+      const modal = document.getElementById('thankYouModal');
+      modal.style.display = 'block';
+      setTimeout(() => {
+        modal.classList.add('fade-out');
+        modal.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+        setTimeout(() => {
+          modal.style.display = 'none';
+          modal.classList.remove('fade-out');
+          modal.style.animation = '';
+          form.reset();
+        }, 500);
+      }, 3000);
+    }
+  });
+</script>
+
 
 </body>
 </html>
