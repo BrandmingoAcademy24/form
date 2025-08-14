@@ -6,6 +6,20 @@
   <title>Jagran Yuva Sansad Registration</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+
+    
+  /* Hide Google bar/bubbles + prevent layout shift */
+  .goog-te-banner-frame.skiptranslate, #goog-gt-tt, .goog-te-balloon-frame { display:none !important; }
+  body { top:0 !important; }
+  /* Tiny floating toggle */
+  #lang-toggle{position:fixed;inset:auto 16px 16px auto;z-index:99999;background:#111;color:#fff;
+    border-radius:12px;padding:8px 10px;font:500 14px/1 system-ui,Segoe UI,Roboto;display:flex;gap:6px}
+  #lang-toggle button{border:0;border-radius:9px;padding:6px 10px;cursor:pointer}
+  #btn-hi{background:#fff;color:#111} #btn-en{background:#2b2b2b;color:#fff;display:none}
+  @media(max-width:480px){#lang-toggle{left:16px;right:auto}}
+
+
+    
     :root {
       --primary: #e31e25;
       --secondary: #e46428;
@@ -243,6 +257,18 @@
 </head>
 <body>
 
+
+  <!-- Hidden mount for Google Translate -->
+<div id="google_translate_element" style="display:none"></div>
+
+<!-- Toggle -->
+<div id="lang-toggle" aria-live="polite">
+  <span>Language</span>
+  <button id="btn-hi">हिन्दी</button>
+  <button id="btn-en">English</button>
+</div>
+
+
   <!-- Responsive NAVBAR -->
 <nav class="navbar" role="navigation">
 
@@ -337,7 +363,7 @@
         <label>Social Media Profile (Ig/Fb/X)</label>
         <input type="url" name="social2" required/>
 
-        <label>ID Card*</label>
+        <label>Collage I Card (JPEG) Maximum file size 5 MB only*</label>
         <input type="file" name="id2" required />
         <span class="error-msg"></span>
 
@@ -432,7 +458,7 @@
         <label>Social Media Profile (Ig/Fb/X)</label>
         <input type="url" name="social2" required/>
 
-        <label>ID Card*</label>
+        <label>Collage I Card (JPEG) Maximum file size 5 MB only*</label>
         <input type="file" name="id2" required />
         <span class="error-msg"></span>
 
@@ -448,31 +474,29 @@
 
     <!-- Motion Topic -->
     <div class="section">
-      <h2>Motion Topic</h2>
-      <label>Choose a topic*</label>
+      <h2>Motion </h2>
+      <label>Choose a motion*</label>
       <select name="motion" required>
         <option value="">-- चयन करें --</option>
-         <option>1. जातीय जनगणना से कल्याणकारी योजनाओं के लिए वंचितों का पहचान करने में आसानी होगी</option>
+<!--          <option>1. जातीय जनगणना से कल्याणकारी योजनाओं के लिए वंचितों का पहचान करने में आसानी होगी</option>
         <option>2. जिसकी जितनी भागीदारी उसकी उतनी हिस्सेदारी</option>
         <option>3. जनसँख्या कानून बेहतर स्वास्थ सेवा और शिक्षा के लिए जरूरी है</option>
         <option>4. जनसँख्या कानून वर्क फ़ोर्स डिविडेंड पर नकारात्मक प्रभाव डालेगा</option>
         <option>5. पूजा स्थल अधिनियम धार्मिक स्वतंत्रता का उल्लंघन है</option>
-<!--         <option>6. समलैंगिक विवाह को वैध बनाने से समानता को बढ़ावा मिलेगा</option> -->
         <option>6. नारीवाद की तीसरी लहर जल्दबाजी में गढ़ी गई है</option>
         <option>7. अप्रवासी सामाजिक समाकलन का प्रतिरोध करते हैं</option>
         <option>8. राज्य को अभिव्यक्ति की स्वतंत्रता की सीमा तय करनी चाहिए</option>
-        <option>9. नाबालिग की आपराधिक उम्र को संशोधित किया जाना चाहिए</option>
+        <option>9. नाबालिग की आपराधिक उम्र को संशोधित किया जाना चाहिए</option> -->
 
-         <option>A. Caste census will make it easier to identify the deprived for welfare schemes.</option>
-        <option>B. As much as one's share is his share</option>
-        <option>C. Population law is necessary for better health care and education</option>
-        <option>D. Population law will have a negative impact on the work force dividend</option>
-        <option>5E. पूजा स्थल अधिनियम धार्मिक स्वतंत्रता का उल्लंघन है</option>
-<!--         <option>6. समलैंगिक विवाह को वैध बनाने से समानता को बढ़ावा मिलेगा</option> -->
-        <option>F. The third wave of feminism has been hastily coined</option>
-        <option>G. Immigrants resist social integration</option>
-        <option>H. The state should set limits on freedom of expression</option>
-        <option>I. The criminal age of a minor should be revised</option>
+         <option>1. Caste census will make it easier to identify the deprived for welfare schemes.</option>
+        <option>2. As much as one's share is his share</option>
+        <option>3. Population law is necessary for better health care and education</option>
+        <option>4. Population law will have a negative impact on the work force dividend</option>
+        <option>5. पूजा स्थल अधिनियम धार्मिक स्वतंत्रता का उल्लंघन है</option>
+        <option>6. The third wave of feminism has been hastily coined</option>
+        <option>7. Immigrants resist social integration</option>
+        <option>8. The state should set limits on freedom of expression</option>
+        <option>9. The criminal age of a minor should be revised</option>
       </select>
       <span class="error-msg"></span>
     </div>
