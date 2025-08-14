@@ -604,5 +604,56 @@
 </script>
 
 
+  <script>
+(()=> {
+  const btnHi = document.getElementById('btn-hi');
+  const btnEn = document.getElementById('btn-en');
+  const KEY = 'siteLang';
+
+  // Set language via Google's injected <select>
+  function setLang(lang){
+    const sel = document.querySelector('select.goog-te-combo');
+    if(!sel) return;
+    sel.value = lang; sel.dispatchEvent(new Event('change'));
+
+    // Hide any banner immediately (defensive)
+    const bar = document.querySelector('.goog-te-banner-frame');
+    if(bar) bar.style.display = 'none';
+    document.body.style.top = '0px';
+
+    const hi = lang === 'hi';
+    btnHi.style.display = hi ? 'none' : 'inline-block';
+    btnEn.style.display = hi ? 'inline-block' : 'none';
+    localStorage.setItem(KEY, lang);
+    // Optional: better Devanagari rendering
+    document.documentElement.style.fontFamily = hi
+      ? "'Noto Sans Devanagari', Montserrat, system-ui, -apple-system, Segoe UI, Roboto"
+      : "Montserrat, system-ui, -apple-system, Segoe UI, Roboto";
+  }
+
+  // Wait until Google injects the combo, then apply saved choice
+  const obs = new MutationObserver(() => {
+    if(document.querySelector('select.goog-te-combo')){
+      const saved = localStorage.getItem(KEY);
+      if(saved) setLang(saved);
+      obs.disconnect();
+    }
+  });
+  obs.observe(document.body, {childList:true,subtree:true});
+
+  // Click handlers
+  btnHi.addEventListener('click', ()=> setLang('hi'));
+  btnEn.addEventListener('click', ()=> setLang(''));   // '' resets to original
+
+  // Fallback: try once after load in case observer missed
+  window.addEventListener('load', ()=> setTimeout(()=>{
+    if(document.querySelector('select.goog-te-combo')){
+      const saved = localStorage.getItem(KEY);
+      if(saved) setLang(saved);
+    }
+  }, 400));
+})();
+</script>
+
 </body>
 </html>
