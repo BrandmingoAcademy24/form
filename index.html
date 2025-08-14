@@ -9,28 +9,7 @@
 
 
 
-<!-- Devanagari font (for crisp Hindi) -->
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 
-<style>
-  /* Hide Google Translate UI completely */
-  .goog-te-banner-frame.skiptranslate, #goog-gt-tt, .goog-te-balloon-frame { display:none !important; }
-  body { top:0 !important; }
-  .goog-te-gadget { height:0; overflow:hidden; }
-
-  /* Simple language pill (put near navbar) */
-  .lang-switch {
-    display:flex; gap:8px; align-items:center;
-    background:#111; color:#fff; border-radius:12px; padding:6px 8px;
-  }
-  .lang-switch button {
-    border:0; cursor:pointer; padding:6px 10px; border-radius:8px; font-weight:600;
-  }
-  .lang-switch .to-hi { background:#fff; color:#111; }
-  .lang-switch .to-en { background:#2b2b2b; color:#fff; display:none; }
-  @media (max-width:600px){ .lang-switch{ margin-top:10px; } }
-</style>
 
   
   <style>
@@ -516,11 +495,7 @@
 
     <button type="submit">Submit</button>
 
-       <div class="lang-switch" id="langSwitch" aria-label="Language switch">
-  <span style="font-weight:600">Language</span>
-  <button class="to-hi" id="btnHi">हिन्दी</button>
-  <button class="to-en" id="btnEn">English</button>
-</div>
+      
   </form>
 
  
@@ -533,71 +508,6 @@
 
   <!-- Hidden Google Translate mount -->
 <div id="google_translate_element" style="display:none;"></div>
-
-<script>
-  // Load Google Translate
-  function googleTranslateElementInit(){
-    new google.translate.TranslateElement(
-      { pageLanguage:'en', includedLanguages:'hi', autoDisplay:false },
-      'google_translate_element'
-    );
-  }
-</script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<script>
-(() => {
-  const btnHi = document.getElementById('btnHi');
-  const btnEn = document.getElementById('btnEn');
-  const KEY  = 'siteLangJYP';
-
-  function hideGoogleUI(){
-    const bar = document.querySelector('.goog-te-banner-frame');
-    if (bar) bar.style.display = 'none';
-    document.body.style.top = '0px';
-  }
-
-  function setLang(lang){
-    const sel = document.querySelector('select.goog-te-combo');
-    if(!sel) return;
-    sel.value = lang;                // 'hi' for Hindi, '' to reset to original
-    sel.dispatchEvent(new Event('change'));
-    hideGoogleUI();
-
-    const isHi = lang === 'hi';
-    btnHi.style.display = isHi ? 'none' : 'inline-block';
-    btnEn.style.display = isHi ? 'inline-block' : 'none';
-    localStorage.setItem(KEY, lang);
-
-    // Switch to Devanagari-friendly font when Hindi is active
-    document.documentElement.style.fontFamily = isHi
-      ? "'Noto Sans Devanagari','Inter',system-ui,-apple-system,Segoe UI,Roboto"
-      : "Inter,system-ui,-apple-system,Segoe UI,Roboto";
-  }
-
-  // Wait until Google injects its <select>, then restore saved language
-  const obs = new MutationObserver(() => {
-    if (document.querySelector('select.goog-te-combo')) {
-      const saved = localStorage.getItem(KEY);
-      if (saved) setLang(saved);
-      obs.disconnect();
-    }
-  });
-  obs.observe(document.body, { childList:true, subtree:true });
-
-  // Buttons
-  btnHi.addEventListener('click', () => setLang('hi'));
-  btnEn.addEventListener('click', () => setLang(''));   // reset to original (English)
-
-  // Safety: try once after load
-  window.addEventListener('load', () => setTimeout(() => {
-    if (document.querySelector('select.goog-te-combo')) {
-      const saved = localStorage.getItem(KEY);
-      if (saved) setLang(saved);
-    }
-  }, 400));
-})();
-</script>
 
 
 <script>
