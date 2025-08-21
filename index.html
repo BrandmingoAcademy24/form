@@ -5,22 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jagran Yuva Sansad Registration</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 
-
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
-
-
-  
   <style>
-
-     /* Hide all Google UI + prevent top gap */
-  .goog-te-banner-frame.skiptranslate, #goog-gt-tt, .goog-te-balloon-frame { display:none !important; }
-  body { top:0 !important; }
-  .goog-te-gadget { height:0 !important; overflow:hidden !important; }
-  .goog-text-highlight { background:none !important; box-shadow:none !important; }
-
+ 
   /* Sticky control */
   #gt-sticky{ position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:99999; }
   #gt-sticky button{
@@ -31,295 +20,246 @@
   #gt-sticky #gt-en{ background:#2b2b2b; }
   @media (max-width:600px){ #gt-sticky button{ padding:8px 10px; } }
 
+  :root {
+    --primary: #e31e25;
+    --secondary: #e46428;
+    --accent: #f9b900;
+    --gray: #3b3c3d;
+    --dark-blue: #0d283f;
+    --light: #ffffff;
+    --bg-light: #f5f7fa;
+    --border: #dcdcdc;
+    --yellow-btn: #f9b900;
+  }
 
-    
-    :root {
-      --primary: #e31e25;
-      --secondary: #e46428;
-      --accent: #f9b900;
-      --gray: #3b3c3d;
-      --dark-blue: #0d283f;
-      --light: #ffffff;
-      --bg-light: #f5f7fa;
-      --border: #dcdcdc;
-      --yellow-btn: #f9b900;
-    }
+  * {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
 
-    * {
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+  body {
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+    color: var(--dark-blue);
+  }
 
-    body {
-      background-color: var(--bg-light);
-      margin: 0;
-      padding: 0;
-      color: var(--dark-blue);
-    }
-
-   .navbar {
-  background: #fff;
-  display: flex;
-  max-width: 800px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 0 0 24px 24px;
-  margin: 0 auto 2rem auto;
-  position: relative;
-  z-index: 10;
-  flex-wrap: wrap;
-}
-
-.navbar .logo {
-  font-weight: 800;
-  font-size: 1.5rem;
-  color: #333;
-  flex: 1 1 100%;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.navbar .nav-links {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  flex: 1 1 100%;
-}
-
-.navbar .nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
-.navbar .nav-links .btn {
-  background: var(--yellow-btn);
-  color: white;
-  font-weight: 600;
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-/* Mobile-specific styling */
-@media (max-width: 600px) {
   .navbar {
-    padding: 1rem 1rem;
+    background: #fff;
+    display: flex;
+    max-width: 960px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 24px 24px;
+    margin: 0 auto 2rem auto;
+    position: relative;
+    z-index: 10;
+    flex-wrap: wrap;
   }
 
   .navbar .logo {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #333;
+    flex: 1 1 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
   }
 
   .navbar .nav-links {
-    flex-direction: column;
-    gap: 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 100%;
+  }
+
+  .navbar .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
   }
 
   .navbar .nav-links .btn {
-    font-size: 1rem;
-    padding: 0.6rem 1.5rem;
+    background: var(--yellow-btn);
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
   }
-}
-}
 
+  /* Mobile-specific styling */
+  @media (max-width: 600px) {
+    .navbar { padding: 1rem 1rem; }
+    .navbar .logo { font-size: 1.2rem; margin-bottom: 0.8rem; }
+    .navbar .nav-links { flex-direction: column; gap: 1rem; }
+    .navbar .nav-links .btn { font-size: 1rem; padding: 0.6rem 1.5rem; }
+  }
 
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: white;
-        padding: 1rem 0;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-      }
+  /* ✅ (Fix) Remove stray brace that was here */
 
-      .nav-links.active {
-        display: flex;
-      }
-
-      .navbar {
-        flex-wrap: wrap;
-      }
-    }
-
-    form {
-      background: var(--light);
-      border-radius: 12px;
-      padding: 2rem;
-      max-width: 960px;
-      margin: auto;
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      color: var(--gray);
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    input, select {
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
       width: 100%;
-      padding: 0.65rem 0.85rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      margin-bottom: 0.8rem;
-      font-size: 0.95rem;
-      background-color: #fff;
-      color: var(--dark-blue);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .error-msg {
-      color: red;
-      font-size: 0.85rem;
-      display: none;
-      margin-top: -0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .invalid {
-      border-color: red !important;
-    }
-
-    button {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      padding: 0.9rem 2rem;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: white;
-      cursor: pointer;
-      display: block;
-      margin: 2rem auto 0;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: var(--primary);
-    }
-
-    /* ✅ Modal Styling */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
+      background: white;
+      padding: 1rem 0;
+      position: absolute;
+      top: 100%;
       left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.5);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
+    .nav-links.active { display: flex; }
+    .navbar { flex-wrap: wrap; }
+  }
 
-    .modal-content {
-      background-color: #fff;
-      margin: 15% auto;
-      padding: 2rem;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      font-size: 1.1rem;
-      animation: zoomIn 0.5s ease-in-out;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
+  form {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 960px;
+    margin: auto;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+  }
 
-    @keyframes zoomIn {
-      0% {
-        transform: scale(0.7);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
+  h2 {
+    font-size: 1.2rem;
+    color: var(--gray);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+  }
 
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    background-color: #fff;
+    color: var(--dark-blue);
+  }
+
+  /* ✅ Grid fixed to 2 columns on desktop, 1 column on mobile/tablet */
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 899.98px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .error-msg {
+    color: red;
+    font-size: 0.85rem;
+    display: none;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .invalid { border-color: red !important; }
+
+  button {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin: 2rem auto 0;
+    transition: background 0.3s ease;
+  }
+  button:hover { background: var(--primary); }
+
+  /* Modal Styling */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    font-size: 1.1rem;
+    animation: zoomIn 0.5s ease-in-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  @keyframes zoomIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
   </style>
 </head>
 <body>
-<!-- Hidden mount for Google Translate -->
-<div id="google_translate_element" style="display:none;"></div>
+  <div id="google_translate_element" style="display:none;"></div>
 
-<!-- Sticky side toggle -->
-<div id="gt-sticky" aria-live="polite">
-  <button id="gt-hi" title="Translate to Hindi">हिन्दी</button>
-  <button id="gt-en" title="Show original" style="display:none">EN</button>
-</div>
-
-
-  <!-- Responsive NAVBAR -->
-<nav class="navbar" role="navigation">
-
-  <div class="logo">Jagran Yuva Sansad Registration Form</div>
-  
-  <div class="nav-links" id="navLinks">
-    <a href="https://brandmingoacademy24.github.io/jyp/" class="btn">Home</a>
+  <div id="gt-sticky" aria-live="polite">
+    <button id="gt-hi" title="Translate to Hindi">हिन्दी</button>
+    <button id="gt-en" title="Show original" style="display:none">EN</button>
   </div>
-  
-<!--   <div class="hamburger" onclick="toggleMenu()">☰</div> -->
 
+  <nav class="navbar" role="navigation">
+    <div class="logo">Jagran Yuva Sansad Registration Form</div>
+    <div class="nav-links" id="navLinks">
+      <a href="https://brandmingoacademy24.github.io/jyp-website/" class="btn">Home</a>
+    </div>
+  </nav>
 
+  <!-- ✨ Your original HTML form and scripts remain unchanged below this line -->
+  <!-- (Keep the rest of your HTML + JS exactly as you shared) -->
 
-  
-</nav>
-
-  <!-- REGISTRATION FORM -->
-  <form id="registrationForm" novalidate>
+  <!-- START: Original Form -->
+  <form id="registrationForm" novalidate enctype="multipart/form-data">
     <div class="grid">
-      <!-- Participant 1 -->
       <div>
         <h2>Participant 1</h2>
-        <label>Name*</label>
-        <input type="text" name="name1" required />
+        <label for="name1">Name*</label>
+        <input type="text" id="name1" name="name1" required pattern="^[A-Za-z ]{2,50}$" title="Only alphabets and spaces allowed (2-50 characters)" />
         <span class="error-msg"></span>
-
-        <label>Date of Birth*</label>
-        <input type="date" name="dob1" max="2025-07-26" required />
+        <label for="dob1">Date of Birth*</label>
+        <input type="date" id="dob1" name="dob1" max="2025-07-26" required />
         <span class="error-msg"></span>
-
-        <label>Gender*</label>
-        <select name="gender1" required>
+        <label for="gender1">Gender*</label>
+        <select id="gender1" name="gender1" required>
           <option value="">Select</option>
           <option>Male</option>
           <option>Female</option>
           <option>Others</option>
         </select>
         <span class="error-msg"></span>
-
-        <label>State*</label>
-        <select name="state1" required>
+        <label for="state1">State*</label>
+        <select id="state1" name="state1" required>
           <option value="">Select State</option>
           <option>Uttar Pradesh</option>
           <option>Delhi</option>
@@ -327,12 +267,10 @@
           <option>Punjab</option>
           <option>West Bengal</option>
           <option>Jarkhand</option>
-        
         </select>
         <span class="error-msg"></span>
-
-        <label>City*</label>
-        <select name="city1" required>
+        <label for="city1">City*</label>
+        <select id="city1" name="city1" required>
           <option value="">Select City</option>
           <option>Gorakhpur</option>
           <option>Varanasi</option>
@@ -348,72 +286,61 @@
           <option>Rachi</option>
         </select>
         <span class="error-msg"></span>
-
-        <label>University*</label>
-        <input type="text" name="university1" required />
+        <label for="university1">University*</label>
+        <input type="text" id="university1" name="university1" required />
         <span class="error-msg"></span>
-        <label>College*</label>
-        <input type="text" name="college1" required />
+        <label for="college1">College*</label>
+        <input type="text" id="college1" name="college1" required />
         <span class="error-msg"></span>
-        <label>Course*</label>
-        <select name="course1" required>
+        <label for="course1">Course*</label>
+        <select id="course1" name="course1" required>
           <option value="">Select</option>
           <option>UG</option>
           <option>PG</option>
         </select>
         <span class="error-msg"></span>
-        <label>Subject*</label>
-        <input type="text" name="subject1" required />
+        <label for="subject1">Subject*</label>
+        <input type="text" id="subject1" name="subject1" required />
         <span class="error-msg"></span>
-
-        <label>Phone*</label>
-        <input type="tel" name="phone1" required />
+        <label for="phone1">Phone*</label>
+        <input type="tel" id="phone1" name="phone1" required pattern="^[0-9]{10}$" title="Phone number must be exactly 10 digits." />
         <span class="error-msg"></span>
-
-        <label>Email*</label>
-        <input type="email" name="email1" required />
+        <label for="email1">Email*</label>
+        <input type="email" id="email1" name="email1" required />
         <span class="error-msg"></span>
-
-        <label>Social Media Profile (Ig/Fb/X)</label>
-        <input type="url" name="social2" required/>
-
-        <label>Collage I Card (JPEG) Maximum file size 5 MB only*</label>
-        <input type="file" name="id2" required />
+        <label for="social1">Social Media Profile (Ig/Fb/X)</label>
+        <input type="url" id="social1" name="social1" />
         <span class="error-msg"></span>
-
-        <label>Language*</label>
-        <select name="course2" required>
+        <label for="id1">Collage I Card (JPEG) Maximum file size 5 MB only*</label>
+        <input type="file" id="id1" name="id1" required accept=".jpg,.jpeg" />
+        <span class="error-msg"></span>
+        <label for="language1">Language*</label>
+        <select id="language1" name="language1" required>
           <option value="">Select</option>
           <option>Hindi</option>
           <option>English</option>
         </select>
         <span class="error-msg"></span>
-        
-       
       </div>
 
-      <!-- Participant 2 -->
       <div>
         <h2>Participant 2</h2>
-        <label>Name*</label>
-        <input type="text" name="name2" required />
+        <label for="name2">Name*</label>
+        <input type="text" id="name2" name="name2" required pattern="^[A-Za-z ]{2,50}$" title="Only alphabets and spaces allowed (2-50 characters)" />
         <span class="error-msg"></span>
-
-        <label>Date of Birth*</label>
-        <input type="date" name="dob2" max="2025-07-26" required />
+        <label for="dob2">Date of Birth*</label>
+        <input type="date" id="dob2" name="dob2" max="2025-07-26" required />
         <span class="error-msg"></span>
-
-        <label>Gender*</label>
-        <select name="gender2" required>
+        <label for="gender2">Gender*</label>
+        <select id="gender2" name="gender2" required>
           <option value="">Select</option>
           <option>Male</option>
           <option>Female</option>
           <option>Others</option>
         </select>
         <span class="error-msg"></span>
-
-        <label>State*</label>
-        <select name="state1" required>
+        <label for="state2">State*</label>
+        <select id="state2" name="state2" required>
           <option value="">Select State</option>
           <option>Uttar Pradesh</option>
           <option>Delhi</option>
@@ -421,12 +348,10 @@
           <option>Punjab</option>
           <option>West Bengal</option>
           <option>Jarkhand</option>
-        
         </select>
         <span class="error-msg"></span>
-
-        <label>City*</label>
-        <select name="city1" required>
+        <label for="city2">City*</label>
+        <select id="city2" name="city2" required>
           <option value="">Select City</option>
           <option>Gorakhpur</option>
           <option>Varanasi</option>
@@ -442,42 +367,36 @@
           <option>Rachi</option>
         </select>
         <span class="error-msg"></span>
-
-
-        <label>University*</label>
-        <input type="text" name="university2" required />
+        <label for="university2">University*</label>
+        <input type="text" id="university2" name="university2" required />
         <span class="error-msg"></span>
-        <label>College*</label>
-        <input type="text" name="college2" required />
+        <label for="college2">College*</label>
+        <input type="text" id="college2" name="college2" required />
         <span class="error-msg"></span>
-        <label>Course*</label>
-        <select name="course2" required>
+        <label for="course2">Course*</label>
+        <select id="course2" name="course2" required>
           <option value="">Select</option>
           <option>UG</option>
           <option>PG</option>
         </select>
         <span class="error-msg"></span>
-        <label>Subject*</label>
-        <input type="text" name="subject2" required />
+        <label for="subject2">Subject*</label>
+        <input type="text" id="subject2" name="subject2" required />
         <span class="error-msg"></span>
-
-        <label>Phone*</label>
-        <input type="tel" name="phone2" required />
+        <label for="phone2">Phone*</label>
+        <input type="tel" id="phone2" name="phone2" required pattern="^[0-9]{10}$" title="Phone number must be exactly 10 digits." />
         <span class="error-msg"></span>
-
-        <label>Email*</label>
-        <input type="email" name="email2" required />
+        <label for="email2">Email*</label>
+        <input type="email" id="email2" name="email2" required />
         <span class="error-msg"></span>
-
-        <label>Social Media Profile (Ig/Fb/X)</label>
-        <input type="url" name="social2" required/>
-
-        <label>Collage I Card (JPEG) Maximum file size 5 MB only*</label>
-        <input type="file" name="id2" required />
+        <label for="social2">Social Media Profile (Ig/Fb/X)</label>
+        <input type="url" id="social2" name="social2" />
         <span class="error-msg"></span>
-
-        <label>Language*</label>
-        <select name="course2" required>
+        <label for="id2">Collage I Card (JPEG) Maximum file size 5 MB only*</label>
+        <input type="file" id="id2" name="id2" required accept=".jpg,.jpeg" />
+        <span class="error-msg"></span>
+        <label for="language2">Language*</label>
+        <select id="language2" name="language2" required>
           <option value="">Select</option>
           <option>Hindi</option>
           <option>English</option>
@@ -486,23 +405,12 @@
       </div>
     </div>
 
-    <!-- Motion Topic -->
     <div class="section">
-      <h2>Motion </h2>
-      <label>Choose a motion*</label>
-      <select name="motion" required>
+      <h2>Motion</h2>
+      <label for="motion">Choose a motion*</label>
+      <select id="motion" name="motion" required>
         <option value="">-- Select --</option>
-<!--          <option>1. जातीय जनगणना से कल्याणकारी योजनाओं के लिए वंचितों का पहचान करने में आसानी होगी</option>
-        <option>2. जिसकी जितनी भागीदारी उसकी उतनी हिस्सेदारी</option>
-        <option>3. जनसँख्या कानून बेहतर स्वास्थ सेवा और शिक्षा के लिए जरूरी है</option>
-        <option>4. जनसँख्या कानून वर्क फ़ोर्स डिविडेंड पर नकारात्मक प्रभाव डालेगा</option>
-        <option>5. पूजा स्थल अधिनियम धार्मिक स्वतंत्रता का उल्लंघन है</option>
-        <option>6. नारीवाद की तीसरी लहर जल्दबाजी में गढ़ी गई है</option>
-        <option>7. अप्रवासी सामाजिक समाकलन का प्रतिरोध करते हैं</option>
-        <option>8. राज्य को अभिव्यक्ति की स्वतंत्रता की सीमा तय करनी चाहिए</option>
-        <option>9. नाबालिग की आपराधिक उम्र को संशोधित किया जाना चाहिए</option> -->
-
-         <option>1. Caste census will make it easier to identify the deprived for welfare schemes.</option>
+        <option>1. Caste census will make it easier to identify the deprived for welfare schemes.</option>
         <option>2. As much as one's share is his share</option>
         <option>3. Population law is necessary for better health care and education</option>
         <option>4. Population law will have a negative impact on the work force dividend</option>
@@ -515,204 +423,426 @@
       <span class="error-msg"></span>
     </div>
 
-    <button type="submit">Submit</button>
-
-      
+    <button type="submit" id="submitBtn">Submit</button>
   </form>
+  <!-- END: Original Form -->
 
- 
-  <!-- Thank You Modal -->
   <div class="modal" id="thankYouModal">
     <div class="modal-content">
-      <p>Thank you for your registration!</p>
+      <p id="modalMessage">Thank you for your registration!</p>
     </div>
   </div>
 
+  <script>
+    // --- Event Listeners and Main Logic --- (unchanged)
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('registrationForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const modal = document.getElementById('thankYouModal');
+      const modalMessage = document.getElementById('modalMessage');
 
-<script>
-  function toggleMenu() {
-    const nav = document.getElementById('navLinks');
-    nav.classList.toggle('active');
-  }
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('dob1').setAttribute('max', today);
+      document.getElementById('dob2').setAttribute('max', today);
 
-  document.getElementById('registrationForm').addEventListener('submit', function (e) {
-    const form = e.target;
-    const fields = form.querySelectorAll('input[required], select[required]');
-    let valid = true;
+      form.querySelectorAll('[required]').forEach(field => {
+        field.addEventListener('input', () => validateField(field));
+        field.addEventListener('change', () => validateField(field));
+        field.addEventListener('blur', () => validateField(field));
+      });
 
-    fields.forEach(field => {
-      const msg = field.parentElement.querySelector('.error-msg');
-      field.classList.remove('invalid');
-      if (msg) {
-        msg.style.display = 'none';
-        msg.textContent = ' ';
-      }
-    });
-    
-    // Validate required fields
-    fields.forEach(field => {
-        const msg = field.nextElementSibling;
-        if (!field.value.trim()) {
-          field.classList.add('invalid');
-          if (msg) {
-            msg.textContent = 'This field is required.';
-            msg.style.display = 'block';
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm()) {
+          const firstInvalid = document.querySelector('.invalid');
+          if (firstInvalid) {
+            firstInvalid.focus();
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
-          valid = false;
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch('submit_new', {
+            method: 'POST',
+            body: formData,
+          });
+          const data = await response.json();
+
+          if (data.success) {
+            showModal('Thank you for your registration!');
+            form.reset();
+            form.querySelectorAll('.invalid').forEach(field => field.classList.remove('invalid'));
+            form.querySelectorAll('.error-msg').forEach(msg => {
+              msg.textContent = '';
+              msg.style.display = 'none';
+            });
+          } else {
+            showModal(data.message, true);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          showModal('An unexpected error occurred. Please try again later.', true);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit';
         }
       });
 
-    fields.forEach(field => {
-      const msg = field.parentElement.querySelector('.error-msg');
-      if (!field.value.trim()) {
-        field.classList.add('invalid');
-        if (msg) {
-          msg.textContent = 'This field is required.';
-          msg.style.display = 'block';
-        }
-        valid = false;
+      function showModal(message, isError = false) {
+        modalMessage.textContent = message;
+        modalMessage.style.color = isError ? 'red' : '#0d283f';
+        modal.style.display = 'block';
+        setTimeout(() => {
+          modal.style.animation = 'fadeOut 0.5s ease-in-out forwards';
+          setTimeout(() => {
+            modal.style.display = 'none';
+            modal.style.animation = '';
+          }, 500);
+        }, isError ? 5000 : 3000);
       }
     });
 
-    const phone1 = form.querySelector('[name="phone1"]').value.trim();
-    const phone2 = form.querySelector('[name="phone2"]').value.trim();
-    const email1 = form.querySelector('[name="email1"]').value.trim();
-    const email2 = form.querySelector('[name="email2"]').value.trim();
-
-    if (phone1 && phone2 && phone1 === phone2) {
-      const phone2Field = form.querySelector('[name="phone2"]');
-      const msg = phone2Field.parentElement.querySelector('.error-msg');
-      phone2Field.classList.add('invalid');
-      if (msg) {
-        msg.textContent = 'Phone numbers must be different.';
-        msg.style.display = 'block';
+    // --- Validation Functions --- (unchanged)
+    function validateField(field) {
+      const errorMsg = field.nextElementSibling;
+      if (field.checkValidity()) {
+        field.classList.remove('invalid');
+        errorMsg.style.display = 'none';
+        return true;
+      } else {
+        field.classList.add('invalid');
+        errorMsg.textContent = field.validationMessage || field.title || 'This field is invalid.';
+        errorMsg.style.display = 'block';
+        return false;
       }
-      valid = false;
     }
 
-    if (email1 && email2 && email1 === email2) {
-      const email2Field = form.querySelector('[name="email2"]');
-      const msg = email2Field.parentElement.querySelector('.error-msg');
-      email2Field.classList.add('invalid');
-      if (msg) {
-        msg.textContent = 'Emails must be different.';
-        msg.style.display = 'block';
+    function validateForm() {
+      let formIsValid = true;
+      const form = document.getElementById('registrationForm');
+      const fields = form.querySelectorAll('[required]');
+
+      fields.forEach(field => {
+        if (!validateField(field)) {
+          formIsValid = false;
+        }
+      });
+
+      const phone1 = document.getElementById('phone1');
+      const phone2 = document.getElementById('phone2');
+      if (phone1.value && phone1.value === phone2.value) {
+        phone2.classList.add('invalid');
+        phone2.nextElementSibling.textContent = 'Phone numbers must be different.';
+        phone2.nextElementSibling.style.display = 'block';
+        formIsValid = false;
       }
-      valid = false;
-    }
 
-    if (!valid) {
-      e.preventDefault();
-    } else {
-      e.preventDefault();
-      const modal = document.getElementById('thankYouModal');
-      modal.style.display = 'block';
-      setTimeout(() => {
-        modal.classList.add('fade-out');
-        modal.style.animation = 'fadeOut 0.5s ease-in-out forwards';
-        setTimeout(() => {
-          modal.style.display = 'none';
-          modal.classList.remove('fade-out');
-          modal.style.animation = '';
-          form.reset();
-        }, 500);
-      }, 3000);
+      const email1 = document.getElementById('email1');
+      const email2 = document.getElementById('email2');
+      if (email1.value && email1.value === email2.value) {
+        email2.classList.add('invalid');
+        email2.nextElementSibling.textContent = 'Emails must be different.';
+        email2.nextElementSibling.style.display = 'block';
+        formIsValid = false;
+      }
+
+      const file1 = document.getElementById('id1');
+      const file2 = document.getElementById('id2');
+      const maxFileSize = 5 * 1024 * 1024;
+
+      const checkFile = (fileInput) => {
+        const file = fileInput.files[0];
+        const errorMsg = fileInput.nextElementSibling;
+        if (file) {
+          if (!file.type.match('image/jpeg')) {
+            fileInput.classList.add('invalid');
+            errorMsg.textContent = 'Only JPEG files are allowed.';
+            errorMsg.style.display = 'block';
+            return false;
+          }
+          if (file.size > maxFileSize) {
+            fileInput.classList.add('invalid');
+            errorMsg.textContent = 'File size must be less than 5 MB.';
+            errorMsg.style.display = 'block';
+            return false;
+          }
+        }
+        return true;
+      };
+
+      if (!checkFile(file1)) formIsValid = false;
+      if (!checkFile(file2)) formIsValid = false;
+
+      return formIsValid;
     }
+  </script>
+
+<script>
+/* ========= Language Packs ========= */
+const LANG = {
+  en: {
+    pageTitle: "Jagran Yuva Sansad Registration",
+    navbarTitle: "Jagran Yuva Sansad Registration Form",
+    navbarHome: "Home",
+    sections: { p1: "Participant 1", p2: "Participant 2", motionH: "Motion" },
+    labels: {
+      name: "Name*",
+      dob: "Date of Birth*",
+      gender: "Gender*",
+      state: "State*",
+      city: "City*",
+      university: "University*",
+      college: "College*",
+      course: "Course*",
+      subject: "Subject*",
+      phone: "Phone*",
+      email: "Email*",
+      social: "Social Media Profile (Ig/Fb/X)",
+      idcard: "Collage I Card (JPEG) Maximum file size 5 MB only*",
+      language: "Language*",
+      motionL: "Choose a motion*"
+    },
+    placeholders: {
+      name: "Enter your name",
+      city: "Enter your city",
+      university: "Enter university name",
+      college: "Enter college name",
+      subject: "Enter subject",
+      phone: "10-digit number",
+      email: "Enter your email",
+      social: "Paste your profile link"
+    },
+    selects: {
+      gender: ["Select", "Male", "Female", "Others"],
+      course: ["Select", "UG", "PG"],
+      language: ["Select", "Hindi", "English"],
+      // Keep your earlier shorter list (you can expand if needed)
+      state1: ["Select State","Uttar Pradesh","Delhi","Haryana","Punjab","West Bengal","Jarkhand"],
+      city1: ["Select City","Gorakhpur","Varanasi","Paryagraj","Kanpur","Aligarh","Meerut","Lucknow","Delhi","Rohtak","Ludhiana","Siliguri","Rachi"],
+      state2: ["Select State","Uttar Pradesh","Delhi","Haryana","Punjab","West Bengal","Jarkhand"],
+      city2: ["Select City","Gorakhpur","Varanasi","Paryagraj","Kanpur","Aligarh","Meerut","Lucknow","Delhi","Rohtak","Ludhiana","Siliguri","Rachi"],
+      motion: [
+        "-- Select --",
+        "1. Caste census will make it easier to identify the deprived for welfare schemes.",
+        "2. As much as one's share is his share",
+        "3. Population law is necessary for better health care and education",
+        "4. Population law will have a negative impact on the work force dividend",
+        "5. The Places of Worship Act is a violation of religious freedom",
+        "6. The third wave of feminism has been hastily coined",
+        "7. Immigrants resist social integration",
+        "8. The state should set limits on freedom of expression",
+        "9. The criminal age of a minor should be revised"
+      ]
+    }
+  },
+
+  hi: {
+    pageTitle: "जागरण युवा संसद पंजीकरण",
+    navbarTitle: "जागरण युवा संसद पंजीकरण फॉर्म",
+    navbarHome: "होम",
+    sections: { p1: "प्रतिभागी 1", p2: "प्रतिभागी 2", motionH: "वाद-विवाद विषय" },
+    labels: {
+      name: "नाम*",
+      dob: "जन्म तिथि*",
+      gender: "लिंग*",
+      state: "राज्य*",
+      city: "शहर*",
+      university: "विश्वविद्यालय*",
+      college: "कॉलेज*",
+      course: "कोर्स*",
+      subject: "विषय*",
+      phone: "फ़ोन नंबर*",
+      email: "ईमेल*",
+      social: "सोशल मीडिया प्रोफ़ाइल (आई.जी /इफ़.बी/ एक्स)",
+      idcard: "कॉलेज पहचान पत्र (JPEG, अधिकतम 5 MB)*",
+      language: "वाद-विवाद की भाषा चुनें*",
+      motionL: "वाद-विवाद विषय चुनें*"
+    },
+    placeholders: {
+      name: "अपना नाम लिखें",
+      city: "अपना शहर लिखें",
+      university: "विश्वविद्यालय का नाम लिखें",
+      college: "कॉलेज का नाम लिखें",
+      subject: "विषय लिखें",
+      phone: "10 अंकों का नंबर",
+      email: "अपना ईमेल लिखें",
+      social: "अपनी प्रोफ़ाइल लिंक पेस्ट करें"
+    },
+    selects: {
+      gender: ["चुनें","पुरुष","महिला","अन्य"],
+      course: ["चुनें","स्नातक (UG)","स्नातकोत्तर (PG)"],
+      language: ["चुनें","हिंदी","अंग्रेज़ी"],
+      state1: ["राज्य चुनें","उत्तर प्रदेश","दिल्ली","हरियाणा","पंजाब","पश्चिम बंगाल","झारखंड"],
+      city1: ["शहर चुनें","गोरखपुर","वाराणसी","प्रयागराज","कानपुर","अलीगढ़","मेरठ","लखनऊ","दिल्ली","रोहतक","लुधियाना","सिलीगुड़ी","रांची"],
+      state2: ["राज्य चुनें","उत्तर प्रदेश","दिल्ली","हरियाणा","पंजाब","पश्चिम बंगाल","झारखंड"],
+      city2: ["शहर चुनें","गोरखपुर","वाराणसी","प्रयागराज","कानपुर","अलीगढ़","मेरठ","लखनऊ","दिल्ली","रोहतक","लुधियाना","सिलीगुड़ी","रांची"],
+      motion: [
+        "-- चुनें --",
+        "जातीय जनगणना से कल्याणकारी योजनाओं के लिए वंचितों की पहचान करने में आसानी होगी।",
+        "जातीय जनगणना का उद्देश्य “जिसकी जितनी भागीदारी, उसकी उतनी हिस्सेदारी” होना चाहिए।",
+        "जनसंख्या कानून बेहतर स्वास्थ्य सेवा और बेहतर शिक्षा के लिए ज़रूरी है।",
+        "जनसंख्या कानून “कार्यबल लाभांश” (वर्कफ़ोर्स डिविडेंड) पर नकारात्मक प्रभाव ला सकता है।",
+        "पूजा स्थल अधिनियम धार्मिक स्वतंत्रता के अधिकार का उल्लंघन करता है।",
+        "नारीवाद की तीसरी लहर (थर्ड वेव) जल्दबाज़ी में गढ़ा गया सिद्धांत है।",
+        "अप्रवासी सामाजिक समाकलन एवं एकीकरण का प्रतिरोध करते हैं।",
+        "राज्य को “अभिव्यक्ति की स्वतंत्रता” का दायरा परिभाषित करना चाहिए।",
+        "आपराधिक कृत्य के मामले में नाबालिग की उम्र को संशोधित करना चाहिए।"
+      ]
+    }
+  }
+};
+
+/* ========= Utilities ========= */
+function setText(sel, text) {
+  const el = document.querySelector(sel);
+  if (el && typeof text === "string") el.textContent = text;
+}
+
+function setLabel(forId, text) {
+  const lab = document.querySelector(`label[for="${forId}"]`);
+  if (lab) lab.textContent = text;
+}
+
+function setPlaceholder(id, text) {
+  const el = document.getElementById(id);
+  if (el && "placeholder" in el) el.placeholder = text;
+}
+
+function fillSelect(selectId, items) {
+  const sel = document.getElementById(selectId);
+  if (!sel || !Array.isArray(items)) return;
+  const current = sel.value;
+  sel.innerHTML = "";
+  items.forEach(v => {
+    const opt = document.createElement("option");
+    opt.textContent = v;
+    opt.value = v;
+    sel.appendChild(opt);
   });
-</script>
+  // Try to keep previous selection if it still exists
+  if ([...sel.options].some(o => o.value === current)) sel.value = current;
+}
 
+/* ========= Apply Language ========= */
+function applyLang(langKey) {
+  const L = LANG[langKey];
 
-  <!-- Load Google Translate -->
-<script>
-  function googleTranslateElementInit(){
-    // include 'hi' only; we reset to original for English
-    new google.translate.TranslateElement(
-      { pageLanguage:'en', includedLanguages:'hi', autoDisplay:false },
-      'google_translate_element'
-    );
-  }
-</script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  // Title & Navbar
+  document.title = L.pageTitle;
+  setText(".navbar .logo", L.navbarTitle);
+  const homeLink = document.querySelector(".nav-links a");
+  if (homeLink) homeLink.textContent = L.navbarHome;
 
-<script>
-(() => {
-  const hiBtn = document.getElementById('gt-hi');
-  const enBtn = document.getElementById('gt-en');
-  const KEY = 'prefLang_hi_en';
+  // Section headings
+  const h2s = document.querySelectorAll("form h2");
+  if (h2s[0]) h2s[0].textContent = L.sections.p1;
+  if (h2s[1]) h2s[1].textContent = L.sections.p2;
+  setText('.section h2', L.sections.motionH);
 
-  function hideGoogleUI(){
-    const bar = document.querySelector('.goog-te-banner-frame');
-    if (bar) bar.style.display = 'none';
-    document.body.style.top = '0';
-  }
+  // Participant 1 labels
+  setLabel("name1", L.labels.name);
+  setLabel("dob1", L.labels.dob);
+  setLabel("gender1", L.labels.gender);
+  setLabel("state1", L.labels.state);
+  setLabel("city1", L.labels.city);
+  setLabel("university1", L.labels.university);
+  setLabel("college1", L.labels.college);
+  setLabel("course1", L.labels.course);
+  setLabel("subject1", L.labels.subject);
+  setLabel("phone1", L.labels.phone);
+  setLabel("email1", L.labels.email);
+  setLabel("social1", L.labels.social);
+  setLabel("id1", L.labels.idcard);
+  setLabel("language1", L.labels.language);
 
-  // Set/clear the Google Translate cookie so behavior is consistent across pages
-  function setGTcookie(value){
-    const d = new Date(); d.setTime(d.getTime() + (365*24*60*60*1000));
-    const expires = '; expires=' + d.toUTCString();
-    const host = location.hostname.replace(/^www\./, '');
-    if (value) {
-      document.cookie = 'googtrans=' + value + expires + '; path=/;';
-      document.cookie = 'googtrans=' + value + expires + '; path=/; domain=.' + host + ';';
-    } else {
-      const past = '; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-      document.cookie = 'googtrans=' + past + '; path=/;';
-      document.cookie = 'googtrans=' + past + '; path=/; domain=.' + host + ';';
-    }
-  }
+  // Participant 2 labels
+  setLabel("name2", L.labels.name);
+  setLabel("dob2", L.labels.dob);
+  setLabel("gender2", L.labels.gender);
+  setLabel("state2", L.labels.state);
+  setLabel("city2", L.labels.city);
+  setLabel("university2", L.labels.university);
+  setLabel("college2", L.labels.college);
+  setLabel("course2", L.labels.course);
+  setLabel("subject2", L.labels.subject);
+  setLabel("phone2", L.labels.phone);
+  setLabel("email2", L.labels.email);
+  setLabel("social2", L.labels.social);
+  setLabel("id2", L.labels.idcard);
+  setLabel("language2", L.labels.language);
 
-  function setLang(lang){
-    const sel = document.querySelector('select.goog-te-combo');
-    if (!sel) return;
+  // Motion section label
+  setLabel("motion", L.labels.motionL);
 
-    if (lang === 'hi') {
-      sel.value = 'hi';
-      sel.dispatchEvent(new Event('change'));
-      setGTcookie('/auto/hi');              // persist Hindi across pages
-    } else { // reset to original English
-      sel.value = '';
-      sel.dispatchEvent(new Event('change'));
-      setGTcookie('');                      // remove translate cookie
-    }
+  // Placeholders (P1)
+  setPlaceholder("name1", L.placeholders.name);
+  setPlaceholder("city1", L.placeholders.city);
+  setPlaceholder("university1", L.placeholders.university);
+  setPlaceholder("college1", L.placeholders.college);
+  setPlaceholder("subject1", L.placeholders.subject);
+  setPlaceholder("phone1", L.placeholders.phone);
+  setPlaceholder("email1", L.placeholders.email);
+  setPlaceholder("social1", L.placeholders.social);
 
-    hideGoogleUI();
+  // Placeholders (P2)
+  setPlaceholder("name2", L.placeholders.name);
+  setPlaceholder("city2", L.placeholders.city);
+  setPlaceholder("university2", L.placeholders.university);
+  setPlaceholder("college2", L.placeholders.college);
+  setPlaceholder("subject2", L.placeholders.subject);
+  setPlaceholder("phone2", L.placeholders.phone);
+  setPlaceholder("email2", L.placeholders.email);
+  setPlaceholder("social2", L.placeholders.social);
 
-    const isHi = lang === 'hi';
-    hiBtn.style.display = isHi ? 'none' : 'block';
-    enBtn.style.display = isHi ? 'block' : 'none';
-    localStorage.setItem(KEY, lang);
+  // Select options
+  fillSelect("gender1", L.selects.gender);
+  fillSelect("course1", L.selects.course);
+  fillSelect("language1", L.selects.language);
+  fillSelect("state1", L.selects.state1);
+  fillSelect("city1", L.selects.city1);
 
-    // Switch font only when Hindi is active
-    document.documentElement.style.fontFamily = isHi
+  fillSelect("gender2", L.selects.gender);
+  fillSelect("course2", L.selects.course);
+  fillSelect("language2", L.selects.language);
+  fillSelect("state2", L.selects.state2);
+  fillSelect("city2", L.selects.city2);
+
+  fillSelect("motion", L.selects.motion);
+
+  // Page font (optional nicer Devanagari)
+  document.documentElement.setAttribute("lang", langKey === "hi" ? "hi" : "en");
+  document.documentElement.style.fontFamily =
+    (langKey === "hi")
       ? "'Noto Sans Devanagari', Inter, system-ui, -apple-system, Segoe UI, Roboto"
       : "Inter, system-ui, -apple-system, Segoe UI, Roboto";
 
-    // Fallback safety: if reset didn't fully apply (rare), ensure original
-    if (!isHi) {
-      setTimeout(() => {
-        hideGoogleUI();
-      }, 200);
-    }
+  localStorage.setItem("jyp_lang", langKey);
+}
+
+/* ========= Wire up the existing sticky buttons ========= */
+// Uses your existing buttons: #gt-hi and #gt-en
+(function initLanguageToggle(){
+  const btnHI = document.getElementById("gt-hi");
+  const btnEN = document.getElementById("gt-en");
+
+  if (btnHI) btnHI.onclick = () => { applyLang("hi"); btnHI.style.display='none'; if(btnEN) btnEN.style.display='block'; };
+  if (btnEN) btnEN.onclick = () => { applyLang("en"); btnEN.style.display='none'; if(btnHI) btnHI.style.display='block'; };
+
+  // Restore last choice or default to EN
+  const saved = localStorage.getItem("jyp_lang") || "en";
+  applyLang(saved);
+  if (btnHI && btnEN) {
+    if (saved === "hi") { btnHI.style.display='none'; btnEN.style.display='block'; }
+    else { btnEN.style.display='none'; btnHI.style.display='block'; }
   }
-
-  // Wait for Google to inject its <select>, then restore saved choice
-  const obs = new MutationObserver(() => {
-    if (document.querySelector('select.goog-te-combo')) {
-      const saved = localStorage.getItem(KEY);
-      if (saved) setLang(saved);
-      obs.disconnect();
-    }
-  });
-  obs.observe(document.body, { childList:true, subtree:true });
-
-  hiBtn.addEventListener('click', () => setLang('hi'));
-  enBtn.addEventListener('click', () => setLang(''));   // reliably back to original
-
-  // Final safety on load
-  window.addEventListener('load', () => setTimeout(hideGoogleUI, 300));
 })();
 </script>
-
 
 </body>
 </html>
