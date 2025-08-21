@@ -508,79 +508,116 @@
       }
     });
 
-    // --- Validation Functions --- (unchanged)
-    function validateField(field) {
-      const errorMsg = field.nextElementSibling;
-      if (field.checkValidity()) {
-        field.classList.remove('invalid');
-        errorMsg.style.display = 'none';
-        return true;
-      } else {
-        field.classList.add('invalid');
-        errorMsg.textContent = field.validationMessage || field.title || 'This field is invalid.';
-        errorMsg.style.display = 'block';
+// ===== Helpers to read current language error strings =====
+function curLang(){ return (localStorage.getItem('jyp_lang') === 'hi') ? 'hi' : 'en'; }
+function EM(){
+  // Use LANG[lang].errorMessages if present; else fall back to EN defaults
+  const dflt = {
+    required: "This field is required.",
+    invalidEmail: "Please enter a valid email.",
+    invalidPhone: "Please enter a valid 10-digit phone number.",
+    fileType: "Only JPEG files are allowed.",
+    fileSize: "File size must be less than 5 MB.",
+    samePhone: "Phone numbers must be different.",
+    sameEmail: "Emails must be different."
+  };
+  try {
+    return (window.LANG && LANG[curLang()] && LANG[curLang()].errorMessages) ? LANG[curLang()].errorMessages : dflt;
+  } catch { return dflt; }
+}
+
+// --- Validation Functions (REPLACEMENT) ---
+function validateField(field) {
+  const errorMsg = field.nextElementSibling;
+  let msg = "";
+
+  // Clear browser default
+  if (field.setCustomValidity) field.setCustomValidity("");
+
+  if (field.validity.valueMissing) {
+    msg = EM().required;
+  } else if (field.type === "email" && field.validity.typeMismatch) {
+    msg = EM().invalidEmail;
+  } else if (field.type === "tel" && field.pattern && field.validity.patternMismatch) {
+    msg = EM().invalidPhone;
+  }
+
+  if (msg) {
+    field.classList.add('invalid');
+    if (errorMsg) { errorMsg.textContent = msg; errorMsg.style.display = 'block'; }
+    if (field.setCustomValidity) field.setCustomValidity(msg);
+    return false;
+  } else {
+    field.classList.remove('invalid');
+    if (errorMsg) { errorMsg.textContent = ''; errorMsg.style.display = 'none'; }
+    if (field.setCustomValidity) field.setCustomValidity('');
+    return true;
+  }
+}
+
+function validateForm() {
+  let formIsValid = true;
+  const form = document.getElementById('registrationForm');
+  const fields = form.querySelectorAll('[required]');
+
+  // 1) Per-field checks
+  fields.forEach(field => {
+    if (!validateField(field)) formIsValid = false;
+  });
+
+  // 2) Duplicate phone numbers
+  const phone1 = document.getElementById('phone1');
+  const phone2 = document.getElementById('phone2');
+  if (phone1 && phone2 && phone1.value && phone1.value === phone2.value) {
+    phone2.classList.add('invalid');
+    if (phone2.nextElementSibling) {
+      phone2.nextElementSibling.textContent = EM().samePhone;
+      phone2.nextElementSibling.style.display = 'block';
+    }
+    formIsValid = false;
+  }
+
+  // 3) Duplicate emails
+  const email1 = document.getElementById('email1');
+  const email2 = document.getElementById('email2');
+  if (email1 && email2 && email1.value && email1.value === email2.value) {
+    email2.classList.add('invalid');
+    if (email2.nextElementSibling) {
+      email2.nextElementSibling.textContent = EM().sameEmail;
+      email2.nextElementSibling.style.display = 'block';
+    }
+    formIsValid = false;
+  }
+
+  // 4) File type/size checks (JPEG + <= 5MB) — using your inline helper
+  const file1 = document.getElementById('id1');
+  const file2 = document.getElementById('id2');
+  const maxFileSize = 5 * 1024 * 1024;
+
+  const checkFile = (fileInput) => {
+    const file = fileInput?.files?.[0];
+    const errorMsg = fileInput?.nextElementSibling;
+    if (file) {
+      if (!file.type.match('image/jpeg')) {
+        fileInput.classList.add('invalid');
+        if (errorMsg) { errorMsg.textContent = EM().fileType; errorMsg.style.display = 'block'; }
+        return false;
+      }
+      if (file.size > maxFileSize) {
+        fileInput.classList.add('invalid');
+        if (errorMsg) { errorMsg.textContent = EM().fileSize; errorMsg.style.display = 'block'; }
         return false;
       }
     }
+    return true;
+  };
 
-    function validateForm() {
-      let formIsValid = true;
-      const form = document.getElementById('registrationForm');
-      const fields = form.querySelectorAll('[required]');
+  if (file1 && !checkFile(file1)) formIsValid = false;
+  if (file2 && !checkFile(file2)) formIsValid = false;
 
-      fields.forEach(field => {
-        if (!validateField(field)) {
-          formIsValid = false;
-        }
-      });
+  return formIsValid;
+}
 
-      const phone1 = document.getElementById('phone1');
-      const phone2 = document.getElementById('phone2');
-      if (phone1.value && phone1.value === phone2.value) {
-        phone2.classList.add('invalid');
-        phone2.nextElementSibling.textContent = 'Phone numbers must be different.';
-        phone2.nextElementSibling.style.display = 'block';
-        formIsValid = false;
-      }
-
-      const email1 = document.getElementById('email1');
-      const email2 = document.getElementById('email2');
-      if (email1.value && email1.value === email2.value) {
-        email2.classList.add('invalid');
-        email2.nextElementSibling.textContent = 'Emails must be different.';
-        email2.nextElementSibling.style.display = 'block';
-        formIsValid = false;
-      }
-
-      const file1 = document.getElementById('id1');
-      const file2 = document.getElementById('id2');
-      const maxFileSize = 5 * 1024 * 1024;
-
-      const checkFile = (fileInput) => {
-        const file = fileInput.files[0];
-        const errorMsg = fileInput.nextElementSibling;
-        if (file) {
-          if (!file.type.match('image/jpeg')) {
-            fileInput.classList.add('invalid');
-            errorMsg.textContent = 'Only JPEG files are allowed.';
-            errorMsg.style.display = 'block';
-            return false;
-          }
-          if (file.size > maxFileSize) {
-            fileInput.classList.add('invalid');
-            errorMsg.textContent = 'File size must be less than 5 MB.';
-            errorMsg.style.display = 'block';
-            return false;
-          }
-        }
-        return true;
-      };
-
-      if (!checkFile(file1)) formIsValid = false;
-      if (!checkFile(file2)) formIsValid = false;
-
-      return formIsValid;
-    }
   </script>
 
 <script>
@@ -622,7 +659,6 @@ const LANG = {
       gender: ["Select", "Male", "Female", "Others"],
       course: ["Select", "UG", "PG"],
       language: ["Select", "Hindi", "English"],
-      // Keep your earlier shorter list (you can expand if needed)
       state1: ["Select State","Uttar Pradesh","Delhi","Haryana","Punjab","West Bengal","Jarkhand"],
       city1: ["Select City","Gorakhpur","Varanasi","Paryagraj","Kanpur","Aligarh","Meerut","Lucknow","Delhi","Rohtak","Ludhiana","Siliguri","Rachi"],
       state2: ["Select State","Uttar Pradesh","Delhi","Haryana","Punjab","West Bengal","Jarkhand"],
@@ -639,6 +675,16 @@ const LANG = {
         "8. The state should set limits on freedom of expression",
         "9. The criminal age of a minor should be revised"
       ]
+    },
+    errorMessages: {
+      required: "This field is required.",
+      invalidEmail: "Please enter a valid email.",
+      invalidPhone: "Please enter a valid 10-digit phone number.",
+      fileSize: "File size must be less than 5 MB.",
+      fileType: "Only JPEG files are allowed.",
+      invalidSocial: "Please enter a valid social profile link.",
+      samePhone: "Phone numbers must be different.",
+      sameEmail: "Emails must be different."
     }
   },
 
@@ -681,7 +727,7 @@ const LANG = {
       state1: ["राज्य चुनें","उत्तर प्रदेश","दिल्ली","हरियाणा","पंजाब","पश्चिम बंगाल","झारखंड"],
       city1: ["शहर चुनें","गोरखपुर","वाराणसी","प्रयागराज","कानपुर","अलीगढ़","मेरठ","लखनऊ","दिल्ली","रोहतक","लुधियाना","सिलीगुड़ी","रांची"],
       state2: ["राज्य चुनें","उत्तर प्रदेश","दिल्ली","हरियाणा","पंजाब","पश्चिम बंगाल","झारखंड"],
-      city2: ["शहर चुनें","गोरखपुर","वाराणसी","प्रयागराज","कानपुर","अलीगढ़","मेरठ","लखनऊ","दिल्ली","रोहतक","लुधियाना","सिलीगुड़ी","रांची"],
+      city2: ["শहर चुनें","गोरखपुर","वाराणसी","प्रयागराज","कानपुर","अलीगढ़","मेरठ","लखनऊ","दिल्ली","रोहतक","लुधियाना","सिलीगुड़ी","रांची"],
       motion: [
         "-- चुनें --",
         "जातीय जनगणना से कल्याणकारी योजनाओं के लिए वंचितों की पहचान करने में आसानी होगी।",
@@ -694,8 +740,17 @@ const LANG = {
         "राज्य को “अभिव्यक्ति की स्वतंत्रता” का दायरा परिभाषित करना चाहिए।",
         "आपराधिक कृत्य के मामले में नाबालिग की उम्र को संशोधित करना चाहिए।"
       ]
+    },
+    errorMessages: {
+      required: "यह फ़ील्ड अनिवार्य है।",
+      invalidEmail: "कृपया मान्य ईमेल दर्ज करें।",
+      invalidPhone: "कृपया मान्य 10-अंकों का फ़ोन नंबर दर्ज करें।",
+      fileSize: "फ़ाइल का आकार 5 MB से अधिक है।",
+      fileType: "केवल JPEG फ़ाइलें ही स्वीकार्य हैं।",
+      invalidSocial: "कृपया सही सोशल प्रोफ़ाइल लिंक दर्ज करें।",
+      samePhone: "दोनों फ़ोन नंबर अलग होने चाहिए।",
+      sameEmail: "दोनों ईमेल अलग होने चाहिए।"
     }
-
   }
 };
 
@@ -845,6 +900,42 @@ function applyLang(langKey) {
     else { btnEN.style.display='none'; btnHI.style.display='block'; }
   }
 })();
+</script>
+  
+  <script>
+function curLangKey(){ return localStorage.getItem("jyp_lang") === "hi" ? "hi" : "en"; }
+function EM(){ return LANG[curLangKey()].errorMessages; } // shortcut for error messages
+</script>
+
+<script>
+/* Only error messages (EN + HI) */
+const ERRORS = {
+  en: {
+    required: "This field is required.",
+    invalidEmail: "Please enter a valid email.",
+    invalidPhone: "Please enter a valid 10-digit phone number.",
+    fileType: "Only JPEG files are allowed.",
+    fileSize: "File size must be less than 5 MB.",
+    samePhone: "Phone numbers must be different.",
+    sameEmail: "Emails must be different."
+  },
+  hi: {
+    required: "यह फ़ील्ड अनिवार्य है।",
+    invalidEmail: "कृपया मान्य ईमेल दर्ज करें।",
+    invalidPhone: "कृपया मान्य 10-अंकों का फ़ोन नंबर दर्ज करें।",
+    fileType: "केवल JPEG फ़ाइलें ही स्वीकार्य हैं।",
+    fileSize: "फ़ाइल का आकार 5 MB से अधिक नहीं होना चाहिए।",
+    samePhone: "दोनों फ़ोन नंबर अलग होने चाहिए।",
+    sameEmail: "दोनों ईमेल अलग होने चाहिए।"
+  }
+};
+
+/* Current language resolver:
+   - Agar aap language toggle me localStorage 'jyp_lang' set kar rahe hain to woh use hoga.
+   - Nahi to default English. */
+function curLang() {
+  return (localStorage.getItem("jyp_lang") === "hi") ? "hi" : "en";
+}
 </script>
 
 </body>
