@@ -714,16 +714,6 @@ errorMessages: {
 };
 
 /* ========= Utilities ========= */
-function showError(inputId, type) {
-  const currentLang = localStorage.getItem("jyp_lang") || "en";
-  const msg = LANG[currentLang].errorMessages[type] || "Invalid field";
-  const field = document.getElementById(inputId);
-  const errorEl = field?.nextElementSibling; // assuming error span is right after input
-  if (errorEl) {
-    errorEl.textContent = msg;
-    errorEl.style.display = "block";
-  }
-}
 
   
 function setText(sel, text) {
