@@ -640,8 +640,8 @@ const LANG = {
       subject: "Subject*",
       phone: "Phone*",
       email: "Email*",
-      social: "Social Media Profile (Ig/Fb/X)",
-      idcard: "Collage I Card (JPEG) Maximum file size 5 MB only*",
+      social: "Social Media Profile (IG/FB/X)",
+      idcard: "College I-Card (JPEG) Maximum file size 5 MB only*",
       language: "Language*",
       motionL: "Choose a motion*"
     },
@@ -655,6 +655,7 @@ const LANG = {
       email: "Enter your email",
       social: "Paste your profile link"
     },
+    submit: "Submit",
     selects: {
       gender: ["Select", "Male", "Female", "Others"],
       course: ["Select", "UG", "PG"],
@@ -705,11 +706,13 @@ const LANG = {
       subject: "विषय*",
       phone: "फ़ोन नंबर*",
       email: "ईमेल*",
-      social: "सोशल मीडिया प्रोफ़ाइल (आई.जी /इफ़.बी/ एक्स)",
-      idcard: "कॉलेज पहचान पत्र (JPEG, अधिकतम 5 MB)*",
+      social: "सोशल मीडिया प्रोफ़ाइल (आई.जी /एफ.बी/ एक्स)",
+      idcard: "कॉलेज पहचान-पत्र (JPEG, अधिकतम 5 MB)*",
       language: "वाद-विवाद की भाषा चुनें*",
-      motionL: "वाद-विवाद विषय चुनें*"
+      motionL: "वाद-विवाद का विषय चुनें*"
     },
+  submit: "जमा करें",
+    
     placeholders: {
       name: "अपना नाम लिखें",
       city: "अपना शहर लिखें",
@@ -797,6 +800,10 @@ function applyLang(langKey) {
   const homeLink = document.querySelector(".nav-links a");
   if (homeLink) homeLink.textContent = L.navbarHome;
 
+  // Update Submit button text
+  document.getElementById('submitBtn').textContent = L.submit;
+
+
   // Section headings
   const h2s = document.querySelectorAll("form h2");
   if (h2s[0]) h2s[0].textContent = L.sections.p1;
@@ -877,7 +884,7 @@ function applyLang(langKey) {
   document.documentElement.setAttribute("lang", langKey === "hi" ? "hi" : "en");
   document.documentElement.style.fontFamily =
     (langKey === "hi")
-      ? "'Noto Sans Devanagari', Inter, system-ui, -apple-system, Segoe UI, Roboto"
+      ? "'Poppins', Inter, system-ui, -apple-system, Segoe UI, Roboto"
       : "Inter, system-ui, -apple-system, Segoe UI, Roboto";
 
   localStorage.setItem("jyp_lang", langKey);
